@@ -150,6 +150,10 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     librs_jni
 
+# Local wrapper for fixups
+PRODUCT_PACKAGES += \
+	camera.find7
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8974 \
