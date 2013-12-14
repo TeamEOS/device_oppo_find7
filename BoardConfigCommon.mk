@@ -160,6 +160,7 @@ BOARD_SEPOLICY_UNION += \
        ssr.te \
        surfaceflinger.te \
        system_server.te \
+       tee.te \
        thermald.te \
        time.te \
        ueventd.te \
