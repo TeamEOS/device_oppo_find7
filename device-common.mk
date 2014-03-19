@@ -71,6 +71,9 @@ PRODUCT_COPY_FILES += \
 
 # Media configuration
 PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     device/oppo/find7/media_codecs.xml:system/etc/media_codecs.xml \
     device/oppo/find7/media_profiles.xml:system/etc/media_profiles.xml \
     device/oppo/find7/mixer_paths.xml:system/etc/mixer_paths.xml
