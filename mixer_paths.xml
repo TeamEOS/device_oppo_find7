@@ -856,4 +856,10 @@
         <ctl name="MAD Input" value="ADC3" />
     </path>
 
+    <path name="voice-rx">
+    </path>
+
+    <path name="voice-tx">
+    </path>
+
 </mixer>
