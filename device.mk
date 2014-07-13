@@ -327,7 +327,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # LTE
 PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnGsmDevice=1 \
-    telephony.lteOnCdmaDevice=0
+    telephony.lteOnCdmaDevice=0 \
+    ro.telephony.default_network=9
 
 # GPS communicates via QMI
 PRODUCT_PROPERTY_OVERRIDES += \
