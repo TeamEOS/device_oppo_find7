@@ -102,8 +102,6 @@ TARGET_BOARD_INFO_FILE := device/oppo/find7/board-info.txt
 BOARD_EGL_CFG := device/oppo/find7/egl.cfg
 
 USE_OPENGL_RENDERER := true
-VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
-SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
 TARGET_USES_ION := true
 
 # For ext4 partitions larger than 2gb
