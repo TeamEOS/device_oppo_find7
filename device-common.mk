@@ -41,8 +41,7 @@ PRODUCT_COPY_FILES += \
 # Input device files for find7
 PRODUCT_COPY_FILES += \
     device/oppo/find7/input/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    device/oppo/find7/input/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl \
-    device/oppo/find7/input/AVRCP.kl:system/usr/keylayout/AVRCP.kl
+    device/oppo/find7/input/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl
     
 # QC IPC cfg
 PRODUCT_COPY_FILES += \
@@ -51,32 +50,6 @@ PRODUCT_COPY_FILES += \
 # QC sensor cfg
 PRODUCT_COPY_FILES += \
     device/oppo/find7/configs/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf
-
-# Vendor keylayout
-PRODUCT_COPY_FILES += \
-    device/oppo/find7/input/vendor/Vendor_1bad_Product_f016.kl:system/usr/keylayout/Vendor_1bad_Product_f016.kl \
-    device/oppo/find7/input/vendor/Vendor_1bad_Product_f023.kl:system/usr/keylayout/Vendor_1bad_Product_f023.kl \
-    device/oppo/find7/input/vendor/Vendor_1bad_Product_f027.kl:system/usr/keylayout/Vendor_1bad_Product_f027.kl \
-    device/oppo/find7/input/vendor/Vendor_1bad_Product_f036.kl:system/usr/keylayout/Vendor_1bad_Product_f036.kl \
-    device/oppo/find7/input/vendor/Vendor_1d79_Product_0009.kl:system/usr/keylayout/Vendor_1d79_Product_0009.kl \
-    device/oppo/find7/input/vendor/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
-    device/oppo/find7/input/vendor/Vendor_12bd_Product_d015.kl:system/usr/keylayout/Vendor_12bd_Product_d015.kl \
-    device/oppo/find7/input/vendor/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
-    device/oppo/find7/input/vendor/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
-    device/oppo/find7/input/vendor/Vendor_046d_Product_c21f.kl:system/usr/keylayout/Vendor_046d_Product_c21f.kl \
-    device/oppo/find7/input/vendor/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
-    device/oppo/find7/input/vendor/Vendor_046d_Product_c219.kl:system/usr/keylayout/Vendor_046d_Product_c219.kl \
-    device/oppo/find7/input/vendor/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
-    device/oppo/find7/input/vendor/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
-    device/oppo/find7/input/vendor/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
-    device/oppo/find7/input/vendor/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl \
-    device/oppo/find7/input/vendor/Vendor_0079_Product_0011.kl:system/usr/keylayout/Vendor_0079_Product_0011.kl \
-    device/oppo/find7/input/vendor/Vendor_0583_Product_2060.kl:system/usr/keylayout/Vendor_0583_Product_2060.kl \
-    device/oppo/find7/input/vendor/Vendor_1038_Product_1412.kl:system/usr/keylayout/Vendor_1038_Product_1412.kl \
-    device/oppo/find7/input/vendor/Vendor_1689_Product_fd00.kl:system/usr/keylayout/Vendor_1689_Product_fd00.kl \
-    device/oppo/find7/input/vendor/Vendor_1689_Product_fd01.kl:system/usr/keylayout/Vendor_1689_Product_fd01.kl \
-    device/oppo/find7/input/vendor/Vendor_1689_Product_fe00.kl:system/usr/keylayout/Vendor_1689_Product_fe00.kl \
-    device/oppo/find7/input/vendor/Vendor_2378_Product_100a.kl:system/usr/keylayout/Vendor_2378_Product_100a.kl
 
 # ACDB Loader calibration
 PRODUCT_COPY_FILES += \
