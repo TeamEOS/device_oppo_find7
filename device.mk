@@ -14,6 +14,10 @@
 # limitations under the License.
 #
 
+# Find7s specific init script
+PRODUCT_COPY_FILES += \
+    device/oppo/find7/ramdisk/init.find7s.rc:root/init.find7s.rc
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=640
 
