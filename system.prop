@@ -42,9 +42,9 @@ ro.data.large_tcp_window_size=true
 persist.timed.enable=true
 
 #
-# disable CABL
+# Enable CABL
 #
-ro.qualcomm.cabl=0  
+ro.qualcomm.cabl=1  
 
 #
 # system prop for NFC DT
