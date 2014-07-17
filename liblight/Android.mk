@@ -21,6 +21,10 @@ LOCAL_SRC_FILES := lights.c
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 
+ifneq ($(filter find7a, $(TARGET_DEVICE)),)
+LOCAL_CFLAGS := -DFIND7A
+endif
+
 LOCAL_MODULE := lights.msm8974
 LOCAL_MODULE_TAGS := optional
 

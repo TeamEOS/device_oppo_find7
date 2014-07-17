@@ -75,22 +75,46 @@ char const *const LED_BLINK_FILE
         = "/sys/class/leds/red/device/blink";
 
 char const *const LED_DT_RED_BRIGHTNESS
+#ifndef FIND7A
+        = "/sys/class/leds/rgb_red/brightness";
+#else
         = "/sys/class/leds/led:rgb_red/brightness";
+#endif
 
 char const *const LED_DT_GREEN_BRIGHTNESS
+#ifndef FIND7A
+        = "/sys/class/leds/rgb_green/brightness";
+#else
         = "/sys/class/leds/led:rgb_green/brightness";
+#endif
 
 char const *const LED_DT_BLUE_BRIGHTNESS
+#ifndef FIND7A
+        = "/sys/class/leds/rgb_blue/brightness";
+#else
         = "/sys/class/leds/led:rgb_blue/brightness";
+#endif
 
 char const *const LED_DT_RAMP_STEP_FILE
+#ifndef FIND7A
+        = "/sys/class/leds/rgb_red/ramp_step_ms";
+#else
         = "/sys/class/leds/led:rgb_red/ramp_step_ms";
+#endif
 
 char const *const LED_DT_DUTY_FILE
+#ifndef FIND7A
+        = "/sys/class/leds/rgb_red/duty_pcts";
+#else
         = "/sys/class/leds/led:rgb_red/duty_pcts";
+#endif
 
 char const *const LED_DT_BLINK_FILE
+#ifndef FIND7A
+        = "/sys/class/leds/rgb_red/blink";
+#else
         = "/sys/class/leds/led:rgb_red/blink";
+#endif
 
 // Number of steps to use in the duty array
 #define LED_DT_DUTY_STEPS       50
