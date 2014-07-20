@@ -157,7 +157,7 @@ BOARD_SEPOLICY_UNION += \
        device.te \
        file_contexts
 
-TARGET_TOUCHBOOST_FREQUENCY:= 1200
+TARGET_TOUCHBOOST_FREQUENCY := 1200
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/oppo/find7_caf/ramdisk/fstab.find7
