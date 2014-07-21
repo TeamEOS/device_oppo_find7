@@ -42,6 +42,9 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.selinux=permissive androidboot.hardware=find7 user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
 
+# Includes
+TARGET_SPECIFIC_HEADER_PATH := device/oppo/find7_caf/kernel-headers
+
 # Flags
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
@@ -58,7 +61,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/oppo/find7/ril/telephony/java/com/android/internal/telephony/QualcommMSIM42RIL.java
+BOARD_RIL_CLASS := ../../../device/oppo/find7_caf/ril/telephony/java/com/android/internal/telephony/QualcommMSIM42RIL.java
 
 # Shader cache config options
 # Maximum size of the GLES Shaders that can be cached for reuse.
