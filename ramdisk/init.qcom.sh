@@ -38,26 +38,20 @@ fi
 start_sensors()
 {
     if [ -c /dev/msm_dsps -o -c /dev/sensors ]; then
-        mkdir -p /data/system/sensors
-        touch /data/system/sensors/settings
-        chmod -h 775 /data/system/sensors
+        mkdir -p /persist/sensors
+        chmod -h 775 /persist/sensors
+        chown -h system:root /persist/sensors
         chmod -h 664 /data/system/sensors/settings
-        chown -h system /data/system/sensors/settings
+        chown -h system:root /persist/sensors/sensors_settings
 
         mkdir -p /data/misc/sensors
         chmod -h 775 /data/misc/sensors
-        #ifdef VENDOR_EDIT
-        #zhengzk add for print sensor driver log
-		touch /data/misc/sensors/sensors_dbg_config.txt
-		chmod -h 777 /data/misc/sensors/sensors_dbg_config.txt
-		echo "DDAlsPrx=1" > /data/misc/sensors/sensors_dbg_config.txt
-        #endif
-		
-        if [ ! -s /data/system/sensors/settings ]; then
-            # If the settings file is empty, enable sensors HAL
-            # Otherwise leave the file with it's current contents
-            echo 1 > /data/system/sensors/settings
-        fi
+        chown -h system:system /data/misc/sensors
+
+        echo 1 > /persist/sensors/sensors_settings
+
+        restorecon -r /data/misc/sensors
+
         start sensors
     fi
 }
@@ -79,23 +73,22 @@ start_battery_monitor()
 	fi
 }
 
-#ifdef VENDOR_EDIT
-#jingchun.wang@Onlinerd.Driver, 2013/12/20 Del charger_monitor service
-#start_charger_monitor()
-#{
-#	if ls /sys/module/qpnp_charger/parameters/charger_monitor; then
-#		chown -h root.system /sys/module/qpnp_charger/parameters/*
-#		chown -h root.system /sys/class/power_supply/battery/input_current_max
-#		chown -h root.system /sys/class/power_supply/battery/input_current_trim
-#		chown -h root.system /sys/class/power_supply/battery/voltage_min
-#		chmod -h 0664 /sys/class/power_supply/battery/input_current_max
-#		chmod -h 0664 /sys/class/power_supply/battery/input_current_trim
-#		chmod -h 0664 /sys/class/power_supply/battery/voltage_min
-#		chmod -h 0664 /sys/module/qpnp_charger/parameters/charger_monitor
-#		start charger_monitor
-#	fi
-#}
-#endif
+start_charger_monitor()
+{
+	if ls /sys/module/qpnp_charger/parameters/charger_monitor; then
+		chown -h root.system /sys/module/qpnp_charger/parameters/*
+		chown -h root.system /sys/class/power_supply/battery/input_current_max
+		chown -h root.system /sys/class/power_supply/battery/input_current_trim
+		chown -h root.system /sys/class/power_supply/battery/input_current_settled
+		chown -h root.system /sys/class/power_supply/battery/voltage_min
+		chmod -h 0664 /sys/class/power_supply/battery/input_current_max
+		chmod -h 0664 /sys/class/power_supply/battery/input_current_trim
+		chmod -h 0664 /sys/class/power_supply/battery/input_current_settled
+		chmod -h 0664 /sys/class/power_supply/battery/voltage_min
+		chmod -h 0664 /sys/module/qpnp_charger/parameters/charger_monitor
+		start charger_monitor
+	fi
+}
 
 baseband=`getprop ro.baseband`
 izat_premium_enablement=`getprop ro.qc.sdk.izat.premium_enabled`
@@ -145,37 +138,32 @@ if [ "$izat_premium_enablement" -ne 1 ]; then
     fi
 fi
 
-#ifndef VENDOR_EDIT
-#DuYuanHua@OnLineRD.AirService.GPS, 2012/10/10, Delete feature XTWIFI 
-#if [ "$izat_service_gtp_wwan_lite" -ne 0 ] ||
-#   [ "$izat_service_gtp_wifi" -ne 0 ] ||
-#   [ "$izat_service_pip" -ne 0 ]; then
-## OS Agent would also be started under the same condition
-#    start location_mq
-#fi
+if [ "$izat_service_gtp_wwan_lite" -ne 0 ] ||
+   [ "$izat_service_gtp_wifi" -ne 0 ] ||
+   [ "$izat_service_pip" -ne 0 ]; then
+# OS Agent would also be started under the same condition
+    start location_mq
+fi
 
-#if [ "$izat_service_gtp_wwan_lite" -ne 0 ] ||
-#   [ "$izat_service_gtp_wifi" -ne 0 ]; then
-## start GTP services shared by WiFi and WWAN Lite
-#    start xtwifi_inet
-#    start xtwifi_client
-#fi
+if [ "$izat_service_gtp_wwan_lite" -ne 0 ] ||
+   [ "$izat_service_gtp_wifi" -ne 0 ]; then
+# start GTP services shared by WiFi and WWAN Lite
+    start xtwifi_inet
+    start xtwifi_client
+fi
 
-#if [ "$izat_service_gtp_wifi" -ne 0 ] ||
-#   [ "$izat_service_pip" -ne 0 ]; then
-## advanced WiFi scan service shared by WiFi and PIP
-#    start lowi-server
-#fi
-#endif /* VENDOR_EDIT */
+if [ "$izat_service_gtp_wifi" -ne 0 ] ||
+   [ "$izat_service_pip" -ne 0 ]; then
+# advanced WiFi scan service shared by WiFi and PIP
+    start lowi-server
+fi
 
-#ifndef VENDOR_EDIT
-#DuYuanHua@OnLineRD.AirService.GPS, 2012/12/25, Delete feature QuIPS
-#if [ "$izat_service_pip" -ne 0 ]; then
-## PIP services
-#    start quipc_main
-#    start quipc_igsn
-#fi
-#endif /* VENDOR_EDIT */
+if [ "$izat_service_pip" -ne 0 ]; then
+# PIP services
+    start quipc_main
+    start quipc_igsn
+fi
+
 start_sensors
 
 case "$target" in
@@ -232,10 +220,7 @@ case "$target" in
                 start_battery_monitor
                 ;;
         esac
-#ifdef VENDOR_EDIT
-#jingchun.wang@Onlinerd.Driver, 2013/12/20 Del charger_monitor service
-#        start_charger_monitor
-#endif
+        start_charger_monitor
         ;;
     "msm8226")
         start_charger_monitor
