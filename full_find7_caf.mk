@@ -23,8 +23,8 @@ PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-PRODUCT_NAME := full_find7
-PRODUCT_DEVICE := find7
+PRODUCT_NAME := full_find7_caf
+PRODUCT_DEVICE := find7_caf
 PRODUCT_BRAND := OPPO
 PRODUCT_MODEL := Find 7
 PRODUCT_MANUFACTURER := OPPO

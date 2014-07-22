@@ -1,5 +1,5 @@
 LOCAL_PATH:= $(call my-dir)
-ifneq ($(filter find7 find7a,$(TARGET_DEVICE)),)
+ifneq ($(filter find7_caf find7a_caf,$(TARGET_DEVICE)),)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
