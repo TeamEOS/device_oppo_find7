@@ -130,17 +130,44 @@ TARGET_OTA_ASSERT_DEVICE := find7,find7a,Find7,Find7a,X9006,X9007
 BOARD_SEPOLICY_DIRS += \
        device/oppo/find7/sepolicy
 
+# The list below is order dependent
+BOARD_SEPOLICY_UNION += \
+       app.te \
+       bluetooth_loader.te \
+       bridge.te \
+       camera.te \
+       device.te \
+       domain.te \
+       file.te \
+       hostapd.te \
+       irsc_util.te \
+       mediaserver.te \
+       mpdecision.te \
+       netmgrd.te \
+       platform_app.te \
+       qmux.te \
+       radio.te \
+       rild.te \
+       rmt.te \
+       sensors.te \
+       ssr.te \
+       surfaceflinger.te \
+       system_server.te \
+       tee.te \
+       thermald.te \
+       time.te \
+       ueventd.te \
+       vss.te \
+       wpa.te \
+       file_contexts \
+       genfs_contexts \
+       te_macros
+
 BOARD_CUSTOM_BOOTIMG_MK := device/oppo/find7/mkbootimg.mk
 
 # Define kernel config for inline building
 TARGET_KERNEL_CONFIG := find7_defconfig
 TARGET_KERNEL_SOURCE := kernel/oppo/find7
-
-# The list below is order dependent
-BOARD_SEPOLICY_UNION += \
-       app.te \
-       device.te \
-       file_contexts
 
 HAVE_ADRENO_SOURCE:= false
 
