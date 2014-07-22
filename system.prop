@@ -42,11 +42,6 @@ ro.data.large_tcp_window_size=true
 persist.timed.enable=true
 
 #
-# Enable CABL
-#
-ro.qualcomm.cabl=1  
-
-#
 # system prop for NFC DT
 #
 ro.nfc.port=I2C

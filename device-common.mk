@@ -312,6 +312,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.serialno=530ef047
 
+# Qcom CABL
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.cabl=1
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib/libril-qc-qmi-1.so \
     rild.libargs=-d /dev/smd0
