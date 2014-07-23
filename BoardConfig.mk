@@ -21,4 +21,4 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oppo/find7/bluetooth
 DEVICE_RESOLUTION := 1080x1920
 
 -include vendor/oppo/find7/BoardConfigVendor.mk
-include device/oppo/find7/BoardConfigCommon.mk
+include device/oppo/find7_caf/BoardConfigCommon.mk
