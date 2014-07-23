@@ -53,21 +53,21 @@ PRODUCT_COPY_FILES += \
 
 # ACDB Loader calibration
 PRODUCT_COPY_FILES += \
-	device/oppo/find7_caf/acdbloader/Bluetooth_cal.acdb:system/etc/Bluetooth_cal.acdb \
-	device/oppo/find7_caf/acdbloader/General_cal.acdb:system/etc/General_cal.acdb \
-	device/oppo/find7_caf/acdbloader/Global_cal.acdb:system/etc/Global_cal.acdb \
-	device/oppo/find7_caf/acdbloader/Handset_cal.acdb:system/etc/Handset_cal.acdb \
-	device/oppo/find7_caf/acdbloader/Hdmi_cal.acdb:system/etc/Hdmi_cal.acdb \
-	device/oppo/find7_caf/acdbloader/Headset_cal.acdb:system/etc/Headset_cal.acdb \
-	device/oppo/find7_caf/acdbloader/Speaker_cal.acdb:system/etc/Speaker_cal.acdb \
-
-# Audio policy
-PRODUCT_COPY_FILES += \
-    device/oppo/find7/audio_policy.conf:system/etc/audio_policy.conf
+    device/oppo/find7_caf/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/oppo/find7_caf/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    device/oppo/find7_caf/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/oppo/find7_caf/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    device/oppo/find7_caf/audio/acdb/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
+    device/oppo/find7_caf/audio/acdb/MTP_General_cal.acdb:system/etc/acdbdata/MTP/MTP_General_cal.acdb \
+    device/oppo/find7_caf/audio/acdb/MTP_Global_cal.acdb:system/etc/acdbdata/MTP/MTP_Global_cal.acdb \
+    device/oppo/find7_caf/audio/acdb/MTP_Handset_cal.acdb:system/etc/acdbdata/MTP/MTP_Handset_cal.acdb \
+    device/oppo/find7_caf/audio/acdb/MTP_Hdmi_cal.acdb:system/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb \
+    device/oppo/find7_caf/audio/acdb/MTP_Headset_cal.acdb:system/etc/acdbdata/MTP/MTP_Headset_cal.acdb \
+    device/oppo/find7_caf/audio/acdb/MTP_Speaker_cal.acdb:system/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
 # Sound config for TAIKO
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf_caf/snd_soc_msm/snd_soc_apq_Taiko_DB:system/etc/snd_soc_msm/snd_soc_apq_Taiko_DB \
+    device/oppo/find7_caf/snd_soc_msm/snd_soc_apq_Taiko_DB:system/etc/snd_soc_msm/snd_soc_apq_Taiko_DB \
     device/oppo/find7_caf/snd_soc_msm/snd_soc_msm_Taiko:system/etc/snd_soc_msm/snd_soc_msm_Taiko \
     device/oppo/find7_caf/snd_soc_msm/snd_soc_msm_Taiko_CDP:system/etc/snd_soc_msm/snd_soc_msm_Taiko_CDP \
     device/oppo/find7_caf/snd_soc_msm/snd_soc_msm_Taiko_ES325:system/etc/snd_soc_msm/snd_soc_msm_Taiko_ES325 \
@@ -79,7 +79,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/oppo/find7_caf/media_codecs.xml:system/etc/media_codecs.xml \
     device/oppo/find7_caf/media_profiles.xml:system/etc/media_profiles.xml \
-    device/oppo/find7_caf/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -191,9 +190,6 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors
-
-PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 PRODUCT_PACKAGES += \
     libqomx_core \

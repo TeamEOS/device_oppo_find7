@@ -5512,7 +5512,6 @@ SectionDevice
 	DisableSequence
 		'SLIM RX1 MUX':0:ZERO
 		'RX1 MIX1 INP1':0:ZERO
-		'RX1 MIX2 INP1':0:ZERO
 		'IIR1 Enable Band1':1:0
 		'IIR1 Enable Band2':1:0
 		'IIR1 Enable Band3':1:0
@@ -6222,6 +6221,34 @@ SectionDevice
 EndSection
 
 SectionDevice
+	Name "Headset Recognition"
+	Comment "Headset Tx device Recognition"
+
+	EnableSequence
+		'AIF1_CAP Mixer SLIM TX7':1:1
+		'SLIM_0_TX Channels':0:One
+		'SLIM TX7 MUX':0:DEC5
+		'DEC5 MUX':0:ADC2
+		'DEC5 Volume':1:67
+		'ADC2 Volume':1:64
+		'IIR1 INP1 MUX':0:DEC5
+	EndSequence
+
+	DisableSequence
+		'AIF1_CAP Mixer SLIM TX7':1:0
+		'SLIM TX7 MUX':0:ZERO
+		'DEC5 MUX':0:ZERO
+		'ADC2 Volume':1:0
+		'DEC5 Volume':1:0
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID	23:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
 	Name "Handset"
 	Comment "Handset Tx device"
 
@@ -6564,12 +6591,12 @@ SectionDevice
 		'SLIM_0_TX Channels':0:Two
 		'SLIM TX7 MUX':0:DEC4
 		'DEC4 MUX':0:ADC3
-		'ADC3 Volume':1:100
-		'DEC4 Volume':1:55
+		'ADC3 Volume':1:45
+		'DEC4 Volume':1:68
 		'SLIM TX8 MUX':0:DEC3
 		'DEC3 MUX':0:ADC4
-		'ADC4 Volume':1:100
-		'DEC3 Volume':1:55
+		'ADC4 Volume':1:45
+		'DEC3 Volume':1:68
 	EndSequence
 
 	DisableSequence
@@ -6599,8 +6626,8 @@ SectionDevice
 		'SLIM_0_TX Channels':0:One
 		'SLIM TX7 MUX':0:DEC4
 		'DEC4 MUX':0:ADC3
-		'ADC3 Volume':1:100
-		'DEC4 Volume':1:55
+		'ADC3 Volume':1:45
+		'DEC4 Volume':1:68
 	EndSequence
 
 	DisableSequence
@@ -6652,19 +6679,19 @@ SectionDevice
 	EnableSequence
 		'AIF1_CAP Mixer SLIM TX7':1:1
 		'SLIM_0_TX Channels':0:One
-		'SLIM TX7 MUX':0:DEC3
-		'DEC3 MUX':0:ADC4
-		'ADC4 Volume':1:100
-		'DEC3 Volume':1:68
+		'SLIM TX7 MUX':0:DEC2
+		'DEC2 MUX':0:ADC5
+		'ADC5 Volume':1:100
+		'DEC2 Volume':1:68
 	EndSequence
 
 	DisableSequence
 		'AIF1_CAP Mixer SLIM TX7':1:0
 		'AIF1_CAP Mixer SLIM TX8':1:0
 		'SLIM TX7 MUX':0:ZERO
-		'DEC3 MUX':0:ZERO
-		'ADC4 Volume':1:0
-		'DEC3 Volume':1:0
+		'DEC2 MUX':0:ZERO
+		'ADC5 Volume':1:0
+		'DEC2 Volume':1:0
 	EndSequence
 
 	ACDBID	42:2
@@ -6797,10 +6824,10 @@ SectionDevice
 		'DEC4 MUX':0:ADC3
 		'ADC3 Volume':1:100
 		'DEC4 Volume':1:68
-		'SLIM TX8 MUX':0:DEC3
-		'DEC3 MUX':0:ADC4
-		'ADC4 Volume':1:100
-		'DEC3 Volume':1:68
+		'SLIM TX8 MUX':0:DEC2
+		'DEC2 MUX':0:ADC5
+		'ADC5 Volume':1:100
+		'DEC2 Volume':1:68
 	EndSequence
 
 	DisableSequence
@@ -6811,9 +6838,9 @@ SectionDevice
 		'ADC3 Volume':1:0
 		'DEC4 Volume':1:0
 		'SLIM TX8 MUX':0:ZERO
-		'DEC3 MUX':0:ZERO
-		'ADC4 Volume':1:0
-		'DEC3 Volume':1:0
+		'DEC2 MUX':0:ZERO
+		'ADC5 Volume':1:0
+		'DEC2 Volume':1:0
 	EndSequence
 
 	ACDBID	35:2
