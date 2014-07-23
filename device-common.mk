@@ -132,6 +132,9 @@ PRODUCT_COPY_FILES += \
     device/oppo/find7_caf/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
+    Torch
+
+PRODUCT_PACKAGES += \
     mac-update \
     wcnss_service
 
