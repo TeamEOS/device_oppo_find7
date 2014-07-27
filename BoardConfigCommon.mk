@@ -132,8 +132,7 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_CUSTOM_BOOTIMG_MK := device/oppo/find7/mkbootimg.mk
 
-# Define kernel config for inline building
-TARGET_KERNEL_CONFIG := find7_defconfig
+# Define kernel source for inline building
 TARGET_KERNEL_SOURCE := kernel/oppo/find7
 
 # The list below is order dependent
