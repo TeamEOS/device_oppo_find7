@@ -132,9 +132,6 @@ PRODUCT_COPY_FILES += \
     device/oppo/find7_caf/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
-    Torch
-
-PRODUCT_PACKAGES += \
     mac-update \
     wcnss_service
 
@@ -234,9 +231,10 @@ PRODUCT_PACKAGES += \
     charger_find7 \
     charger_res_images_find7
 
-# Device Settings
+# Misc
 PRODUCT_PACKAGES += \
-    Find7Settings
+    Find7Settings \
+    Torch
 
 # msm_rng entropy feeder
 PRODUCT_PACKAGES += \

@@ -43,12 +43,32 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
 
 # Includes
-TARGET_SPECIFIC_HEADER_PATH := device/oppo/find7_caf/kernel-headers
+#TARGET_SPECIFIC_HEADER_PATH := device/oppo/find7_caf/kernel-headers
 
 # Flags
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS -DOPPO_CAMERA_HARDWARE
+
+# QCOM hardware
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_USES_QCOM_BSP := true
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_DISPLAY_VARIANT := caf-new
+TARGET_QCOM_MEDIA_VARIANT := caf-new
+TARGET_DISPLAY_USE_RETIRE_FENCE := true
+
+# Audio
+BOARD_USES_ALSA_AUDIO := true
+AUDIO_FEATURE_DEEP_BUFFER_PRIMARY := true
+AUDIO_FEATURE_DYNAMIC_VOLUME_MIXER := true
+AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP := true
+AUDIO_FEATURE_DISABLED_FM := true
+AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_QCOM := true
 
 # QC Time Services
 BOARD_USES_QC_TIME_SERVICES := true
@@ -63,6 +83,16 @@ TARGET_PROVIDES_LIBLIGHT := true
 # RIL
 BOARD_RIL_CLASS := ../../../device/oppo/find7_caf/ril/telephony/java/com/android/internal/telephony/QualcommMSIM42RIL.java
 
+# Graphics
+BOARD_EGL_CFG := device/oppo/find7_caf/egl.cfg
+USE_OPENGL_RENDERER := true
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_ION := true
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+HAVE_ADRENO_SOURCE:= false
+VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
+SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
+
 # Shader cache config options
 # Maximum size of the GLES Shaders that can be cached for reuse.
 # Increase the size if shaders of size greater than 12KB are used.
@@ -73,35 +103,8 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# Audio
-BOARD_USES_ALSA_AUDIO := true
-AUDIO_FEATURE_DEEP_BUFFER_PRIMARY := true
-AUDIO_FEATURE_DYNAMIC_VOLUME_MIXER := true
-AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP := true
-AUDIO_FEATURE_DISABLED_FM := true
-AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
-
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_QCOM := true
-
 # Uses libqc-* static libraries from Qualcomm
 BOARD_USES_LIBQC_OPT := true
-
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
-TARGET_USES_QCOM_BSP := true
-TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_DISPLAY_VARIANT := caf-new
-TARGET_QCOM_MEDIA_VARIANT := caf-new
-TARGET_USES_C2D_COMPOSITION := true
-
-HAVE_ADRENO_SOURCE:= false
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
-
-BOARD_EGL_CFG := device/oppo/find7_caf/egl.cfg
-USE_OPENGL_RENDERER := true
-TARGET_USES_ION := true
 
 # Boot animation
 TARGET_BOOTANIMATION_PRELOAD := true
