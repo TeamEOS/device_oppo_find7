@@ -156,6 +156,7 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    copybit.msm8974 \
     gralloc.msm8974 \
     libgenlock \
     hwcomposer.msm8974 \
