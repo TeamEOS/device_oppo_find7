@@ -627,14 +627,6 @@ service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
     oneshot
     disabled
 
-service ims_regmanager /system/bin/exe-ims-regmanagerprocessnative
-    class late_start
-    group qcom_oncrpc net_bt_admin inet radio wifi
-    disabled
-
-on property:persist.ims.regmanager.mode=1
-    start ims_regmanager
-
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
@@ -644,65 +636,10 @@ service battery_monitor /system/bin/battery_monitor
     group system
     disabled
 
-service profiler_daemon /system/bin/profiler_daemon
-    class late_start
-    user root
-    group root
-    disabled
-
-#Add for wifi ftm by qiulei
-service wififtmserver /system/bin/sh system/bin/wifi_ftm
-    class late_start
-    user root
-    group root
-    disabled
-   # oneshot
-
-on property:WFtmUp=1
-	start wififtmserver
-
-service wifisingle /system/bin/sh system/bin/wifi_single
-    class late_start
-    user root
-    group root
-    disabled
-    oneshot
-   
-on property:oppo.WifiSgle=1
-	start wifisingle
-
-#Add for wifi ftm by qiulei
-service wififtmserver /system/bin/sh system/bin/wifi_ftm
-    class late_start
-    user root
-    group root
-    disabled
-   # oneshot
-
-on property:WFtmUp=1
-	start wififtmserver
-
-service wifisingle /system/bin/sh system/bin/wifi_single
-    class late_start
-    user root
-    group root
-    disabled
-    oneshot
-   
-on property:oppo.WifiSgle=1
-	start wifisingle
-
-#Add end by qiulei
 # Binding fuse mount point to /storage/emulated/legacy
 on property:init.svc.sdcard=running
     wait /mnt/shell/emulated/0
     mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
-
-service hcidump /system/bin/sh /system/etc/hcidump.sh
-    user bluetooth
-    group bluetooth system net_bt_admin net_admin
-    disabled
-    oneshot
 
 service charger /charger_find7
     class charger
@@ -711,22 +648,6 @@ service ssr_diag /system/bin/ssr_diag
     class late_start
     user system
     group system
-
-service hvdcp /system/bin/hvdcp
-    class core
-    user root
-    disabled
-
-on property:persist.usb.hvdcp.detect=true
-    start hvdcp
-
-on property:persist.usb.hvdcp.detect=false
-    stop hvdcp
-
-service charger_monitor /system/bin/charger_monitor
-    user system
-    group system
-    disabled
 
 #Zhongjun.Diao@OnlineRd.AirService, 2014/02/25, Modify diag_mdlog start method
 # clean up the log mask before diag_mdlog exit, otherwise there may be endless error log printed
@@ -764,12 +685,6 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
-
-#start gesture server as daemon
-service qgesturesvr /system/bin/mm-gesture-daemon
-    class late_start
-    user system
-    group system camera input graphics net_bt_stack
 
 service qrngd /system/bin/qrngd -f
     class main
