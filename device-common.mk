@@ -266,13 +266,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=fluence \
-    ro.qc.sdk.audio.ssr=false \
-    persist.audio.fluence.voicecall=true \
+    persist.audio.handset.mic.type=digital \
     persist.audio.dualmic.config=endfire \
-    af.resampler.quality=4 \
-    audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=false
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    persist.audio.fluence.speaker=false \
+    af.resampler.quality=4
 
 # Sensor Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
