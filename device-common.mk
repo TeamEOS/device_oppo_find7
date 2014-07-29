@@ -294,6 +294,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnCdmaDevice=0 \
     ro.telephony.default_network=9
 
+# Qcom time daemon
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.timed.enable=true
+
+# NFC DT
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.nfc.port=I2C
+
+# WiFi display
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0
+
 # GPS communicates via QMI
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qmienabled=true
@@ -310,9 +323,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.serialno=530ef047
 
+# Allow device to be used without SIM
+PRODUCT_PROPERTY_OVERRIDES += \
+    keyguard.no_require_sim=true
+
+# DRM content
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
+
 # Qcom CABL
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.cabl=1
+
+# Qcom optimizations
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=/vendor/lib/libqc-opt.so
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib/libril-qc-qmi-1.so \
