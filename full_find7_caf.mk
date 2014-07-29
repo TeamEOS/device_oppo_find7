@@ -29,4 +29,4 @@ PRODUCT_BRAND := OPPO
 PRODUCT_MODEL := Find 7
 PRODUCT_MANUFACTURER := OPPO
 
-$(call inherit-product, device/oppo/find7/device.mk)
+$(call inherit-product, device/oppo/find7_caf/device.mk)

@@ -15,7 +15,7 @@
 #
 
 # BT device name
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oppo/find7/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oppo/find7_caf/bluetooth
 
 # TWRP specific build flags
 DEVICE_RESOLUTION := 1080x1920
