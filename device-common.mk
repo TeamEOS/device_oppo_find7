@@ -124,6 +124,9 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 DEVICE_PACKAGE_OVERLAYS := \
     device/oppo/find7/overlay
 
+PRODUCT_PACKAGES += \
+    Torch
+
 # WiFi
 PRODUCT_COPY_FILES += \
     device/oppo/find7/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
