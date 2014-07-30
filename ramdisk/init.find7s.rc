@@ -1,4 +1,5 @@
 # Copyright (c) 2009-2012, The Linux Foundation. All rights reserved.
+# Copyright (C) 2014 TeamEOS
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -27,15 +28,21 @@
 
 on boot
     # For find7s notification LED
-    chown system system /sys/class/leds/rgb_red/brightness
-    chown system system /sys/class/leds/rgb_red/ramp_step_ms
-    chown system system /sys/class/leds/rgb_red/duty_pcts
-    chown system system /sys/class/leds/rgb_red/blink
-    chown system system /sys/class/leds/rgb_green/brightness
-    chown system system /sys/class/leds/rgb_green/ramp_step_ms
-    chown system system /sys/class/leds/rgb_green/duty_pcts
-    chown system system /sys/class/leds/rgb_green/blink
     chown system system /sys/class/leds/rgb_blue/brightness
-    chown system system /sys/class/leds/rgb_blue/ramp_step_ms
-    chown system system /sys/class/leds/rgb_blue/duty_pcts
     chown system system /sys/class/leds/rgb_blue/blink
+    chown system system /sys/class/leds/rgb_blue/ramp_step_ms
+    chown system system /sys/class/leds/rgb_green/brightness
+    chown system system /sys/class/leds/rgb_green/blink
+    chown system system /sys/class/leds/rgb_green/ramp_step_ms
+    chown system system /sys/class/leds/rgb_red/brightness
+    chown system system /sys/class/leds/rgb_red/blink
+    chown system system /sys/class/leds/rgb_red/ramp_step_ms
+    chmod 0666 /sys/class/leds/rgb_blue/brightness
+    chmod 0666 /sys/class/leds/rgb_blue/blink
+    chmod 0666 /sys/class/leds/rgb_blue/ramp_step_ms
+    chmod 0666 /sys/class/leds/rgb_green/brightness
+    chmod 0666 /sys/class/leds/rgb_green/blink
+    chmod 0666 /sys/class/leds/rgb_green/ramp_step_ms
+    chmod 0666 /sys/class/leds/rgb_red/brightness
+    chmod 0666 /sys/class/leds/rgb_red/blink
+    chmod 0666 /sys/class/leds/rgb_red/ramp_step_ms
