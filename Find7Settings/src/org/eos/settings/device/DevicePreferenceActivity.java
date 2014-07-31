@@ -20,6 +20,7 @@ import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceFragment;
@@ -35,23 +36,25 @@ public class DevicePreferenceActivity extends PreferenceFragment {
     public static final String KEY_FLASH_GESTURE = "flash_gesture";
     public static final String KEY_CAMERA_GESTURE = "camera_gesture";
     public static final String KEY_DOUBLETAP_GESTURE = "doubletap_gesture";
-	public static final String KEY_VIBRATOR_TUNING = "vibrator_tuning";
+    public static final String KEY_VIBRATOR_TUNING = "vibrator_tuning";
+    public static final String KEY_GAMMA_MODE = "gamma_mode";
     
     private Context context;
     private CheckBoxPreference mMusicGesture;
     private CheckBoxPreference mFlashGesture;
     private CheckBoxPreference mCameraGesture;
     private CheckBoxPreference mDoubleTapGesture;
-	private VibratorTuningPreference mVibratorTuning;
+    private VibratorTuningPreference mVibratorTuning;
+    private ListPreference mGammaMode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-		ActionBar actionBar = getActivity().getActionBar();
-		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME
-					  | actionBar.DISPLAY_SHOW_TITLE);
-		actionBar.setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getActivity().getActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_HOME
+                      | actionBar.DISPLAY_SHOW_TITLE);
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         addPreferencesFromResource(R.xml.preferences);
         context = getActivity().getApplication();
@@ -71,54 +74,59 @@ public class DevicePreferenceActivity extends PreferenceFragment {
         mDoubleTapGesture = (CheckBoxPreference) findPreference(KEY_DOUBLETAP_GESTURE);
         mDoubleTapGesture.setChecked(DoubleTapGesture.isEnabled());
         mDoubleTapGesture.setEnabled(DoubleTapGesture.isSupported());
-		
-		mVibratorTuning = (VibratorTuningPreference) findPreference(KEY_VIBRATOR_TUNING);
-		mVibratorTuning.setEnabled(VibratorTuningPreference.isSupported());
+
+        mVibratorTuning = (VibratorTuningPreference) findPreference(KEY_VIBRATOR_TUNING);
+        mVibratorTuning.setEnabled(VibratorTuningPreference.isSupported());
+
+        mGammaMode = (ListPreference) findPreference(KEY_GAMMA_MODE);
+        mGammaMode.setEnabled(GammaMode.isSupported());
+        mGammaMode.setOnPreferenceChangeListener(new GammaMode());
+        GammaMode.updateSummary(mGammaMode, Integer.parseInt(mGammaMode.getValue()));
     }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			getActivity().finish();
-			break;
-		default:
-			break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            getActivity().finish();
+            break;
+        default:
+            break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-    if (preference == mMusicGesture) {
-        if (mMusicGesture.isChecked())
-            MusicGesture.enable(context);
-        else
-            MusicGesture.disable(context);
-        return true;
-    }
-    else if (preference == mFlashGesture) {
-        if (mFlashGesture.isChecked())
-            FlashGesture.enable(context);
-        else
-            FlashGesture.disable(context);
-        return true;
-    }
-    else if (preference == mCameraGesture) {
-        if (mCameraGesture.isChecked())
-            CameraGesture.enable(context);
-        else
-            CameraGesture.disable(context);
-        return true;
-    }
-    else if (preference == mDoubleTapGesture) {
-        if (mDoubleTapGesture.isChecked())
-            DoubleTapGesture.enable(context);
-        else
-            DoubleTapGesture.disable(context);
-        return true;
-    }
+        if (preference == mMusicGesture) {
+            if (mMusicGesture.isChecked())
+                MusicGesture.enable(context);
+            else
+                MusicGesture.disable(context);
+            return true;
+        }
+        else if (preference == mFlashGesture) {
+            if (mFlashGesture.isChecked())
+                FlashGesture.enable(context);
+            else
+                FlashGesture.disable(context);
+            return true;
+        }
+        else if (preference == mCameraGesture) {
+            if (mCameraGesture.isChecked())
+                CameraGesture.enable(context);
+            else
+                CameraGesture.disable(context);
+            return true;
+        }
+        else if (preference == mDoubleTapGesture) {
+            if (mDoubleTapGesture.isChecked())
+                DoubleTapGesture.enable(context);
+            else
+                DoubleTapGesture.disable(context);
+            return true;
+        }
 
     return super.onPreferenceTreeClick(preferenceScreen, preference);
-}
+    }
 }
