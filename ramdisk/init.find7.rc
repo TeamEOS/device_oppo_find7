@@ -111,6 +111,10 @@ on boot
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chmod 0660 /sys/devices/virtual/timed_output/vibrator/vtg_level
 
+    # Gamma mode
+    chown system system /sys/devices/virtual/graphics/fb0/gamma
+    chmod 0660 /sys/devices/virtual/graphics/fb0/gamma
+
     # IMS qmi daemon
     start imsqmidaemon
 

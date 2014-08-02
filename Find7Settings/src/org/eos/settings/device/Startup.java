@@ -28,6 +28,7 @@ public class Startup extends BroadcastReceiver {
         CameraGesture.restore(context);
         DoubleTapGesture.restore(context);
         FlashGesture.restore(context);
-		VibratorTuningPreference.restore(context);
+        VibratorTuningPreference.restore(context);
+        GammaMode.restore(context);
     }
 }
