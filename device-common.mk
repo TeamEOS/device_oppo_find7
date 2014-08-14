@@ -34,10 +34,6 @@ PRODUCT_COPY_FILES += \
     device/oppo/find7/qcscripts/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
     device/oppo/find7/qcscripts/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
 
-# Sdcard permission fixups
-PRODUCT_COPY_FILES += \
-    device/oppo/find7/qcscripts/init.sdcard_perms.sh:system/etc/init.sdcard_perms.sh
-
 # Input device files for find7
 PRODUCT_COPY_FILES += \
     device/oppo/find7/input/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \

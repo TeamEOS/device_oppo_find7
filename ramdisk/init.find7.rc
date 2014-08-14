@@ -40,15 +40,19 @@ on init
     mkdir /persist 0771 system system
 
     # See storage config details at http://source.android.com/tech/storage/
-    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
-    mkdir /storage/sdcard0 0700 root root
+    chmod 0701 /mnt/media_rw
 
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0700 root root
+    # Internal sdcard
+    mkdir /mnt/media_rw/sdcard0 0775 system system
+    mkdir /storage/sdcard0 0000 system system
+
+    # External sdcard
+    mkdir /mnt/media_rw/sdcard1 0775 system system
+    mkdir /storage/sdcard1 0000 system system
 
     # USB OTG (kitkat)
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0700 root root   
+    mkdir /mnt/media_rw/usbdisk 0775 system system
+    mkdir /storage/usbdisk 0000 system system
     
     # Legacy support
     symlink /storage/sdcard0 /sdcard
@@ -59,7 +63,7 @@ on init
     
     # Finally tell the system what is what
     export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1
+    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
 
 on fs
  	mount_all ./fstab.find7
@@ -85,7 +89,6 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
-    #Zhengpeng@OnLineRD.AirService.RIL, 2013/11/4, Add for create opponvitems dir
 	mkdir /data/opponvitems  0771 radio radio
 
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -668,21 +671,18 @@ service diag_mdlog_stop /system/bin/diag_mdlog -k
     group system qcom_diag sdcard_rw sdcard_r media_rw
     disabled
     oneshot
-    
-# internal sdcard
-service fuse_sdcard0 /system/bin/sh /system/etc/init.sdcard_perms.sh
-   class late_start
-   disabled
 
-# external sdcard
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard0
-   class late_start
-   disabled
-    
-# usb-otg storage
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+    disabled
+
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
 service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
-   class late_start
-   disabled
+    class late_start
+    disabled
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
