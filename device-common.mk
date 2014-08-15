@@ -31,8 +31,7 @@ PRODUCT_COPY_FILES += \
 
 # QCOM scripts
 PRODUCT_COPY_FILES += \
-    device/oppo/find7/qcscripts/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-    device/oppo/find7/qcscripts/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
+    device/oppo/find7/qcscripts/init.qcom.bt.sh:system/etc/init.qcom.bt.sh
 
 # Input device files for find7
 PRODUCT_COPY_FILES += \
