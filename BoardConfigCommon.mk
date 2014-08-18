@@ -43,7 +43,19 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.selinux=permissive androidboot.hardware=find7 user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
 
+# QCOM hardware
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_USES_QCOM_BSP := true
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_DISPLAY_VARIANT := caf-new
+TARGET_QCOM_MEDIA_VARIANT := caf-new
+TARGET_DISPLAY_USE_RETIRE_FENCE := true
+
+TARGET_DISPLAY_USE_RETIRE_FENCE := true
+
 # Flags
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # QC Time Services
@@ -72,6 +84,10 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
+AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP := true
+AUDIO_FEATURE_DISABLED_FM := true
+AUDIO_FEATURE_ENABLED_MULTIPLE_TUNNEL := true
+BOARD_USE_RESAMPLER_IN_PCM_OFFLOAD_PATH := true
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
@@ -130,7 +146,7 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_CUSTOM_BOOTIMG_MK := device/oppo/find7/mkbootimg.mk
 
 # Define kernel source for inline building
-TARGET_KERNEL_SOURCE := kernel/oppo/find7
+TARGET_KERNEL_SOURCE := kernel/oppo/msm8974
 
 # The list below is order dependent
 BOARD_SEPOLICY_UNION += \

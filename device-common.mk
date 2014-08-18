@@ -163,23 +163,53 @@ PRODUCT_PACKAGES += \
     libqdutils \
     libqdMetaData
 
-# OMX
-PRODUCT_PACKAGES += \
+# Media
+    PRODUCT_PACKAGES += \
     libc2dcolorconvert \
-    libstagefrighthw \
+    libdivxdrmdecrypt \
+    libdashplayer \
+    libOmxAacEnc \
+    libOmxAmrEnc \
     libOmxCore \
-    libmm-omxcore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVdecHevc \
-    libOmxVenc
+    libOmxVenc \
+    libstagefrighthw \
+    qcmediaplayer
+
+PRODUCT_BOOT_JARS += qcmediaplayer
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.msm8974 \
+    audiod \
     audio.a2dp.default \
-    audio.usb.default \
+    audio_policy.msm8974 \
+    audio.primary.msm8974 \
     audio.r_submix.default \
-    libaudio-resampler
+    audio.usb.default \
+    libaudio-resampler \
+    libqcompostprocbundle \
+    tinymix
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    mm.enable.smoothstreaming=true \
+    mm.enable.qcom_parser=3183219 \
+    ro.qc.sdk.audio.fluencetype=fluence \
+    persist.audio.fluence.voicecall=true \
+    af.resampler.quality=4 \
+    audio.offload.buffer.size.kb=32 \
+    av.offload.enable=true \
+    av.streaming.offload.enable=true \
+    use.voice.path.for.pcm.voip=true \
+    audio.offload.multiple.enabled=true \
+    audio.offload.gapless.enabled=true \
+    qcom.hw.aac.encoder=true \
+    tunnel.audio.encode=true \
+    media.aac_51_output_enabled=true \
+    audio.offload.pcm.enable=true \
+    audio.offload.24bit.enable=1
 
 # Audio effects
 PRODUCT_PACKAGES += \
