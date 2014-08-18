@@ -10,44 +10,50 @@
             android:title="@string/music_gesture"
             android:summary="@string/music_gesture_summary"
             android:defaultValue="false" />
-	
-	    <CheckBoxPreference
+
+        <CheckBoxPreference
             android:key="camera_gesture"
             android:persistent="false"
             android:title="@string/camera_gesture"
             android:summary="@string/camera_gesture_summary"
             android:defaultValue="false" />
-	    
-	    <CheckBoxPreference
+
+        <CheckBoxPreference
             android:key="doubletap_gesture"
             android:persistent="false"
             android:title="@string/doubletap_gesture"
             android:summary="@string/doubletap_gesture_summary"
             android:defaultValue="false" />
-	    
-	    <CheckBoxPreference
+
+        <CheckBoxPreference
             android:key="flash_gesture"
             android:persistent="false"
             android:title="@string/flash_gesture"
             android:summary="@string/flash_gesture_summary"
             android:defaultValue="false" />
     </PreferenceCategory>
-	
-	<!-- General settings -->
+
+    <!-- General settings -->
     <PreferenceCategory 
-		android:key="category_hardware"
+        android:key="category_hardware"
         android:title="@string/category_hardware_title">
+        <ListPreference
+            android:key="gamma_mode"
+            android:title="@string/gamma_mode_title"
+            android:entries="@array/array_gamma_entries"
+            android:entryValues="@array/array_gamma_values"
+            android:defaultValue="1" />
         <org.eos.settings.device.VibratorTuningPreference
             android:key="vibrator_tuning"
             android:title="@string/vibrator_tuning_title_head"
             android:summary="@string/vibrator_tuning_summary_head" />
     </PreferenceCategory>
 
-	<PreferenceScreen 
-		android:title="@string/cabc_settings_summary_head" >
-		<intent android:action="android.intent.action.MAIN" 
-				android:targetPackage="com.qualcomm.cabl" 
-				android:targetClass="com.qualcomm.cabl.CABLPreferences" />
-	</PreferenceScreen>
+    <PreferenceScreen
+        android:title="@string/cabc_settings_title_head"
+        android:summary="@string/cabc_settings_summary_head">
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.qualcomm.cabl"
+            android:targetClass="com.qualcomm.cabl.CABLPreferences" />
+    </PreferenceScreen>
 </PreferenceScreen>
-

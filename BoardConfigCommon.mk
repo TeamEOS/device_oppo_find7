@@ -43,7 +43,7 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
 
 # Includes
-#TARGET_SPECIFIC_HEADER_PATH := device/oppo/find7_caf/kernel-headers
+#TARGET_SPECIFIC_HEADER_PATH := device/oppo/find7/kernel-headers
 
 # Flags
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
@@ -75,16 +75,17 @@ BOARD_USES_QC_TIME_SERVICES := true
 TARGET_NO_RPC := true
 
 # Camera
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS -DOPPO_CAMERA_HARDWARE -DFOURKSUPPORT
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/oppo/find7_caf/ril/telephony/java/com/android/internal/telephony/QualcommMSIM42RIL.java
+BOARD_RIL_CLASS := ../../../device/oppo/find7/ril/telephony/java/com/android/internal/telephony/QualcommMSIM42RIL.java
 
 # Graphics
-BOARD_EGL_CFG := device/oppo/find7_caf/egl.cfg
+BOARD_EGL_CFG := device/oppo/find7/egl.cfg
 USE_OPENGL_RENDERER := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
@@ -126,7 +127,7 @@ TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 
 TARGET_BOOTLOADER_BOARD_NAME := find7
-TARGET_BOARD_INFO_FILE := device/oppo/find7_caf/board-info.txt
+TARGET_BOARD_INFO_FILE := device/oppo/find7/board-info.txt
 
 # For ext4 partitions larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -143,18 +144,17 @@ BOARD_PERSISTIMAGE_PARTITION_SIZE  := 33554432
 #BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/oppo/find7_caf
+TARGET_RELEASETOOLS_EXTENSIONS := device/oppo/find7
 TARGET_OTA_ASSERT_DEVICE := find7,find7a,Find7,Find7a,X9006,X9007
 
 #BOARD_HAL_STATIC_LIBRARIES := libdumpstate.find7
 
 BOARD_SEPOLICY_DIRS += \
-       device/oppo/find7_caf/sepolicy
+       device/oppo/find7/sepolicy
 
-BOARD_CUSTOM_BOOTIMG_MK := device/oppo/find7_caf/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/oppo/find7/mkbootimg.mk
 
 # Define kernel config for inline building
-TARGET_KERNEL_CONFIG := msm8974_find7_defconfig
 TARGET_KERNEL_SOURCE := kernel/oppo/msm8974
 
 # The list below is order dependent
@@ -163,10 +163,17 @@ BOARD_SEPOLICY_UNION += \
        device.te \
        file_contexts
 
+HAVE_ADRENO_SOURCE:= false
+
+OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
+TARGET_DISABLE_ADAPTIVE_DISPLAY := true
+TARGET_USES_C2D_COMPOSITION := true
+
 TARGET_TOUCHBOOST_FREQUENCY := 1200
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/oppo/find7_caf/ramdisk/fstab.find7
+TARGET_RECOVERY_FSTAB := device/oppo/find7/ramdisk/fstab.find7
 
 # TWRP specific build flags
 RECOVERY_GRAPHICS_USE_LINELENGTH := true

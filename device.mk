@@ -16,7 +16,7 @@
 	
 # Find7s specific init script
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/ramdisk/init.find7s.rc:root/init.find7s.rc
+    device/oppo/find7/ramdisk/init.find7s.rc:root/init.find7s.rc
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=640
@@ -35,7 +35,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_large_cache_height=1024
 
 # the actual meat of the device-specific product definition
-$(call inherit-product, device/oppo/find7_caf/device-common.mk)
+$(call inherit-product, device/oppo/find7/device-common.mk)
 
 # inherit from the non-open-source side, if present
 $(call inherit-product-if-exists, vendor/oppo/find7/find7-vendor.mk)

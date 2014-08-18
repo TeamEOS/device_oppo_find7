@@ -40,15 +40,19 @@ on init
     mkdir /persist 0771 system system
 
     # See storage config details at http://source.android.com/tech/storage/
-    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
-    mkdir /storage/sdcard0 0700 root root
+    chmod 0701 /mnt/media_rw
 
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0700 root root
+    # Internal sdcard
+    mkdir /mnt/media_rw/sdcard0 0775 system system
+    mkdir /storage/sdcard0 0000 system system
+
+    # External sdcard
+    mkdir /mnt/media_rw/sdcard1 0775 system system
+    mkdir /storage/sdcard1 0000 system system
 
     # USB OTG (kitkat)
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0700 root root   
+    mkdir /mnt/media_rw/usbdisk 0775 system system
+    mkdir /storage/usbdisk 0000 system system
     
     # Legacy support
     symlink /storage/sdcard0 /sdcard
@@ -59,7 +63,7 @@ on init
     
     # Finally tell the system what is what
     export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1
+    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
 
 on fs
  	mount_all ./fstab.find7
@@ -85,7 +89,6 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
-    #Zhengpeng@OnLineRD.AirService.RIL, 2013/11/4, Add for create opponvitems dir
 	mkdir /data/opponvitems  0771 radio radio
 
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -110,6 +113,10 @@ on boot
     # Vibrator control
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chmod 0660 /sys/devices/virtual/timed_output/vibrator/vtg_level
+
+    # Gamma mode
+    chown system system /sys/devices/virtual/graphics/fb0/gamma
+    chmod 0660 /sys/devices/virtual/graphics/fb0/gamma
 
     # IMS qmi daemon
     start imsqmidaemon
@@ -143,25 +150,6 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    #hsic
-    chown system system /sys/bus/platform/drivers/msm_hsic_host/bind
-    chown system system /sys/bus/platform/drivers/msm_hsic_host/unbind
-    chmod 0200 /sys/bus/platform/drivers/msm_hsic_host/bind
-    chmod 0200 /sys/bus/platform/drivers/msm_hsic_host/unbind
-
-    #charger
-    chown root system /sys/module/qpnp_charger/parameters/charger_monitor
-    chown root system /sys/class/power_supply/battery/input_current_max
-    chown root system /sys/class/power_supply/battery/input_current_trim
-    chown root system /sys/class/power_supply/battery/voltage_min
-    chmod 0644 /sys/module/qpnp_charger/parameters/charger_monitor
-    chmod 0644 /sys/class/power_supply/battery/input_current_max
-    chmod 0644 /sys/class/power_supply/battery/input_current_trim
-    chmod 0644 /sys/class/power_supply/battery/voltage_min
-
-    # Allow QMUX daemon to assign port open wait time
-    chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
-
     setprop wifi.interface wlan0
 
 #   Define TCP buffer sizes for various networks
@@ -171,10 +159,6 @@ on boot
 
     setprop ro.telephony.call_ring.multiple false
 
-    #Set SUID bit for usbhub
-    chmod 4755 /system/bin/usbhub
-    chmod 755 /system/bin/usbhub_init
-
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
@@ -183,23 +167,6 @@ on boot
 
     #For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
-
-    # create symlink for fb1 as HDMI
-    symlink /dev/graphics/fb1 /dev/graphics/hdmi
-
-    # setup permissions for fb1 related nodes
-    chown system graphics /sys/class/graphics/fb1/hpd
-    chown system graphics /sys/class/graphics/fb1/vendor_name
-    chown system graphics /sys/class/graphics/fb1/product_description
-    chmod 0664 /sys/devices/virtual/graphics/fb1/hpd
-    chmod 0664 /sys/devices/virtual/graphics/fb1/vendor_name
-    chmod 0664 /sys/devices/virtual/graphics/fb1/product_description
-
-    chown system system /sys/devices/virtual/graphics/fb0/cabc
-    chmod 0660 /sys/devices/virtual/graphics/fb0/cabc
-
-    chown system graphics /sys/devices/virtual/graphics/fb0/panel_calibration
-    chmod 0660 /sys/devices/virtual/graphics/fb0/panel_calibration
 
     #To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
@@ -351,16 +318,8 @@ on post-fs-data
     mkdir /data/audio 0770 media audio
     chmod 2770 /data/audio
 
-    #Create directories for gpsone_daemon services
-    mkdir /data/misc/gpsone_d 0770 system gps
-
-    #Create directories for QuIPS
-    mkdir /data/misc/quipc 0770 gps system
-
     #Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
-    mkdir /data/misc/location/mq 0770 gps gps
-    mkdir /data/misc/location/xtwifi 0770 gps gps
 
     # kickstart
     mkdir /data/qcks 0770 system system
@@ -456,43 +415,14 @@ on post-fs-data
     start mpdecision
     start sensors
 
-# Export GPIO56 for fusion targets to enable/disable hub
-service usbhub_init /system/bin/usbhub_init
-   class late_start
-   user root
-   disabled
-   oneshot
-
-on property:persist.radio.atfwd.start=false
-    stop atfwd
-
 on property:init.svc.surfaceflinger=stopped
     stop ppd
-    stop hdmid
-
-on property:ro.board.platform=msm7630_fusion
-    start usbhub_init
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
 on property:bluetooth.isEnabled=true
     write /sys/class/bluetooth/hci0/idle_timeout 7000
-
-on property:bluetooth.sap.status=running
-    start bt-sap
-
-on property:bluetooth.sap.status=stopped
-    stop bt-sap
-
-on property:bluetooth.dun.status=running
-    start bt-dun
-
-on property:bluetooth.dun.status=stopped
-    stop bt-dun
-
-on property:ro.bluetooth.ftm_enabled=true
-    start ftmd
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
@@ -530,27 +460,6 @@ service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
     user root
     oneshot
 
-service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin inet
-    disabled
-    oneshot
-
-service bt-sap /system/bin/sapd 15
-    user bluetooth
-    group bluetooth net_bt_admin
-    class late_start
-    disabled
-    oneshot
-
-service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
-    class late_start
-    user root
-    group bluetooth net_bt_admin misc net_bt_stack qcom_diag
-    disabled
-    oneshot
-
 service bridgemgrd /system/bin/bridgemgrd
     class late_start
     user radio
@@ -586,24 +495,6 @@ on property:ro.use_data_netmgrd=false
 # but only if ro.data.large_tcp_window_size property is set.
 on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
-service amp_init /system/bin/amploader -i
-    class late_start
-    user root
-    disabled
-    oneshot
-
-service amp_load /system/bin/amploader -l 7000
-    class late_start
-    user root
-    disabled
-    oneshot
-
-service amp_unload /system/bin/amploader -u
-    class late_start
-    user root
-    disabled
-    oneshot
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
@@ -691,48 +582,6 @@ service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
 
-service gpsone_daemon /system/bin/gpsone_daemon
-    class late_start
-    user gps
-    group gps qcom_oncrpc inet net_raw
-    disabled
-
-service quipc_igsn /system/bin/quipc_igsn
-    class late_start
-    user gps
-    group inet gps qcom_diag
-    disabled
-
-service quipc_main /system/bin/quipc_main
-    class late_start
-    user gps
-    group gps net_admin wifi inet qcom_diag
-    disabled
-
-service location_mq /system/bin/location-mq
-    class late_start
-    user gps
-    group gps
-    disabled
-
-service xtwifi_inet /system/bin/xtwifi-inet-agent
-    class late_start
-    user gps
-    group inet gps
-    disabled
-
-service xtwifi_client /system/bin/xtwifi-client
-    class late_start
-    user gps
-    group net_admin wifi inet gps
-    disabled
-
-service lowi-server /system/bin/lowi-server
-    class late_start
-    user gps
-    group gps net_admin wifi inet qcom_diag
-    disabled
-
 on property:crypto.driver.load=1
      insmod /system/lib/modules/qce.ko
      insmod /system/lib/modules/qcedev.ko
@@ -772,17 +621,6 @@ service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
 on property:sys.boot_completed=1
     start qcom-post-boot
 
-#service atfwd /system/bin/ATFWD-daemon
-#    class late_start
-#    user system
-#    group system radio
-#    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD daemon restarted"
-
-service hdmid /system/bin/hdmid
-    class late_start
-    socket hdmid stream 0660 root system graphics
-    disabled
-
 service ppd /system/bin/mm-pp-daemon
     class late_start
     user system
@@ -796,14 +634,6 @@ service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
     oneshot
     disabled
 
-service ims_regmanager /system/bin/exe-ims-regmanagerprocessnative
-    class late_start
-    group qcom_oncrpc net_bt_admin inet radio wifi
-    disabled
-
-on property:persist.ims.regmanager.mode=1
-    start ims_regmanager
-
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
@@ -813,65 +643,10 @@ service battery_monitor /system/bin/battery_monitor
     group system
     disabled
 
-service profiler_daemon /system/bin/profiler_daemon
-    class late_start
-    user root
-    group root
-    disabled
-
-#Add for wifi ftm by qiulei
-service wififtmserver /system/bin/sh system/bin/wifi_ftm
-    class late_start
-    user root
-    group root
-    disabled
-   # oneshot
-
-on property:WFtmUp=1
-	start wififtmserver
-
-service wifisingle /system/bin/sh system/bin/wifi_single
-    class late_start
-    user root
-    group root
-    disabled
-    oneshot
-   
-on property:oppo.WifiSgle=1
-	start wifisingle
-
-#Add for wifi ftm by qiulei
-service wififtmserver /system/bin/sh system/bin/wifi_ftm
-    class late_start
-    user root
-    group root
-    disabled
-   # oneshot
-
-on property:WFtmUp=1
-	start wififtmserver
-
-service wifisingle /system/bin/sh system/bin/wifi_single
-    class late_start
-    user root
-    group root
-    disabled
-    oneshot
-   
-on property:oppo.WifiSgle=1
-	start wifisingle
-
-#Add end by qiulei
 # Binding fuse mount point to /storage/emulated/legacy
 on property:init.svc.sdcard=running
     wait /mnt/shell/emulated/0
     mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
-
-service hcidump /system/bin/sh /system/etc/hcidump.sh
-    user bluetooth
-    group bluetooth system net_bt_admin net_admin
-    disabled
-    oneshot
 
 service charger /charger_find7
     class charger
@@ -880,22 +655,6 @@ service ssr_diag /system/bin/ssr_diag
     class late_start
     user system
     group system
-
-service hvdcp /system/bin/hvdcp
-    class core
-    user root
-    disabled
-
-on property:persist.usb.hvdcp.detect=true
-    start hvdcp
-
-on property:persist.usb.hvdcp.detect=false
-    stop hvdcp
-
-service charger_monitor /system/bin/charger_monitor
-    user system
-    group system
-    disabled
 
 #Zhongjun.Diao@OnlineRd.AirService, 2014/02/25, Modify diag_mdlog start method
 # clean up the log mask before diag_mdlog exit, otherwise there may be endless error log printed
@@ -912,33 +671,24 @@ service diag_mdlog_stop /system/bin/diag_mdlog -k
     group system qcom_diag sdcard_rw sdcard_r media_rw
     disabled
     oneshot
-    
-# internal sdcard
-service fuse_sdcard0 /system/bin/sh /system/etc/init.sdcard_perms.sh
-   class late_start
-   disabled
 
-# external sdcard
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard0
-   class late_start
-   disabled
-    
-# usb-otg storage
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+    disabled
+
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
 service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
-   class late_start
-   disabled
+    class late_start
+    disabled
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
-
-#start gesture server as daemon
-service qgesturesvr /system/bin/mm-gesture-daemon
-    class late_start
-    user system
-    group system camera input graphics net_bt_stack
 
 service qrngd /system/bin/qrngd -f
     class main

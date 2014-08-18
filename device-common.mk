@@ -16,69 +16,65 @@
 
 # OPPO ramfs bits
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/ramdisk/init.find7.usb.rc:root/init.find7.usb.rc
+    device/oppo/find7/ramdisk/init.find7.usb.rc:root/init.find7.usb.rc
 
 # QCOM ramfs bits
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/ramdisk/init.find7.rc:root/init.find7.rc \
-    device/oppo/find7_caf/ramdisk/init.qcom.sh:root/init.qcom.sh \
-    device/oppo/find7_caf/ramdisk/fstab.find7:root/fstab.find7 \
-    device/oppo/find7_caf/ramdisk/ueventd.find7.rc:root/ueventd.find7.rc
+    device/oppo/find7/ramdisk/init.find7.rc:root/init.find7.rc \
+    device/oppo/find7/ramdisk/init.qcom.sh:root/init.qcom.sh \
+    device/oppo/find7/ramdisk/fstab.find7:root/fstab.find7 \
+    device/oppo/find7/ramdisk/ueventd.find7.rc:root/ueventd.find7.rc
 
 # TWRP fstab
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/twrp.fstab:recovery/root/etc/twrp.fstab
+    device/oppo/find7/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # QCOM scripts
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/qcscripts/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-    device/oppo/find7_caf/qcscripts/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
-
-# Sdcard permission fixups
-PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/qcscripts/init.sdcard_perms.sh:system/etc/init.sdcard_perms.sh
+    device/oppo/find7/qcscripts/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+    device/oppo/find7/qcscripts/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh
 
 # Input device files for find7
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/input/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    device/oppo/find7_caf/input/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl
+    device/oppo/find7/input/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    device/oppo/find7/input/atmel_mxt_ts.kl:system/usr/keylayout/atmel_mxt_ts.kl
     
 # QC IPC cfg
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/configs/sec_config:system/etc/sec_config
+    device/oppo/find7/configs/sec_config:system/etc/sec_config
 
 # QC sensor cfg
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/configs/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf
+    device/oppo/find7/configs/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf
 
 # ACDB Loader calibration
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    device/oppo/find7_caf/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    device/oppo/find7_caf/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/oppo/find7_caf/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    device/oppo/find7_caf/audio/acdb/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
-    device/oppo/find7_caf/audio/acdb/MTP_General_cal.acdb:system/etc/acdbdata/MTP/MTP_General_cal.acdb \
-    device/oppo/find7_caf/audio/acdb/MTP_Global_cal.acdb:system/etc/acdbdata/MTP/MTP_Global_cal.acdb \
-    device/oppo/find7_caf/audio/acdb/MTP_Handset_cal.acdb:system/etc/acdbdata/MTP/MTP_Handset_cal.acdb \
-    device/oppo/find7_caf/audio/acdb/MTP_Hdmi_cal.acdb:system/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb \
-    device/oppo/find7_caf/audio/acdb/MTP_Headset_cal.acdb:system/etc/acdbdata/MTP/MTP_Headset_cal.acdb \
-    device/oppo/find7_caf/audio/acdb/MTP_Speaker_cal.acdb:system/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
+    device/oppo/find7/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/oppo/find7/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    device/oppo/find7/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/oppo/find7/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    device/oppo/find7/audio/acdb/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
+    device/oppo/find7/audio/acdb/MTP_General_cal.acdb:system/etc/acdbdata/MTP/MTP_General_cal.acdb \
+    device/oppo/find7/audio/acdb/MTP_Global_cal.acdb:system/etc/acdbdata/MTP/MTP_Global_cal.acdb \
+    device/oppo/find7/audio/acdb/MTP_Handset_cal.acdb:system/etc/acdbdata/MTP/MTP_Handset_cal.acdb \
+    device/oppo/find7/audio/acdb/MTP_Hdmi_cal.acdb:system/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb \
+    device/oppo/find7/audio/acdb/MTP_Headset_cal.acdb:system/etc/acdbdata/MTP/MTP_Headset_cal.acdb \
+    device/oppo/find7/audio/acdb/MTP_Speaker_cal.acdb:system/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
 # Sound config for TAIKO
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/snd_soc_msm/snd_soc_apq_Taiko_DB:system/etc/snd_soc_msm/snd_soc_apq_Taiko_DB \
-    device/oppo/find7_caf/snd_soc_msm/snd_soc_msm_Taiko:system/etc/snd_soc_msm/snd_soc_msm_Taiko \
-    device/oppo/find7_caf/snd_soc_msm/snd_soc_msm_Taiko_CDP:system/etc/snd_soc_msm/snd_soc_msm_Taiko_CDP \
-    device/oppo/find7_caf/snd_soc_msm/snd_soc_msm_Taiko_ES325:system/etc/snd_soc_msm/snd_soc_msm_Taiko_ES325 \
-    device/oppo/find7_caf/snd_soc_msm/snd_soc_msm_Taiko_Fluid:system/etc/snd_soc_msm/snd_soc_msm_Taiko_Fluid \
-    device/oppo/find7_caf/snd_soc_msm/snd_soc_msm_Taiko_liquid:system/etc/snd_soc_msm/snd_soc_msm_Taiko_liquid \
-    device/oppo/find7_caf/snd_soc_msm/snd_soc_msm_Taiko_OnePlus:system/etc/snd_soc_msm/snd_soc_msm_Taiko_OnePlus
+    device/oppo/find7/snd_soc_msm/snd_soc_apq_Taiko_DB:system/etc/snd_soc_msm/snd_soc_apq_Taiko_DB \
+    device/oppo/find7/snd_soc_msm/snd_soc_msm_Taiko:system/etc/snd_soc_msm/snd_soc_msm_Taiko \
+    device/oppo/find7/snd_soc_msm/snd_soc_msm_Taiko_CDP:system/etc/snd_soc_msm/snd_soc_msm_Taiko_CDP \
+    device/oppo/find7/snd_soc_msm/snd_soc_msm_Taiko_ES325:system/etc/snd_soc_msm/snd_soc_msm_Taiko_ES325 \
+    device/oppo/find7/snd_soc_msm/snd_soc_msm_Taiko_Fluid:system/etc/snd_soc_msm/snd_soc_msm_Taiko_Fluid \
+    device/oppo/find7/snd_soc_msm/snd_soc_msm_Taiko_liquid:system/etc/snd_soc_msm/snd_soc_msm_Taiko_liquid \
+    device/oppo/find7/snd_soc_msm/snd_soc_msm_Taiko_OnePlus:system/etc/snd_soc_msm/snd_soc_msm_Taiko_OnePlus
 
 # Media configuration
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/media_codecs.xml:system/etc/media_codecs.xml \
-    device/oppo/find7_caf/media_profiles.xml:system/etc/media_profiles.xml \
+    device/oppo/find7/media_codecs.xml:system/etc/media_codecs.xml \
+    device/oppo/find7/media_profiles.xml:system/etc/media_profiles.xml \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -108,8 +104,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
 
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/configs/thermald-8974.conf:system/etc/thermald-8974.conf \
-    device/oppo/find7_caf/configs/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
+    device/oppo/find7/configs/thermald-8974.conf:system/etc/thermald-8974.conf \
+    device/oppo/find7/configs/thermal-engine-8974.conf:system/etc/thermal-engine-8974.conf
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -121,15 +117,18 @@ PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 DEVICE_PACKAGE_OVERLAYS := \
-    device/oppo/find7_caf/overlay
+    device/oppo/find7/overlay
+
+PRODUCT_PACKAGES += \
+    Torch
 
 # WiFi
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    device/oppo/find7_caf/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-    device/oppo/find7_caf/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
-    device/oppo/find7_caf/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    device/oppo/find7_caf/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+    device/oppo/find7/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    device/oppo/find7/wifi/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
+    device/oppo/find7/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
+    device/oppo/find7/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    device/oppo/find7/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
     mac-update \
@@ -202,9 +201,9 @@ PRODUCT_PACKAGES += \
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
-    device/oppo/find7_caf/gps/gps.conf:system/etc/gps.conf \
-    device/oppo/find7_caf/gps/izat.conf:system/etc/izat.conf \
-    device/oppo/find7_caf/gps/sap.conf:system/etc/sap.conf
+    device/oppo/find7/gps/gps.conf:system/etc/gps.conf \
+    device/oppo/find7/gps/izat.conf:system/etc/izat.conf \
+    device/oppo/find7/gps/sap.conf:system/etc/sap.conf
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -264,13 +263,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=fluence \
-    ro.qc.sdk.audio.ssr=false \
-    persist.audio.fluence.voicecall=true \
+    persist.audio.handset.mic.type=digital \
     persist.audio.dualmic.config=endfire \
-    af.resampler.quality=4 \
-    audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=false
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
+    persist.audio.fluence.speaker=false \
+    af.resampler.quality=4
 
 # Sensor Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -293,6 +291,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnCdmaDevice=0 \
     ro.telephony.default_network=9
 
+# Qcom time daemon
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.timed.enable=true
+
+# NFC DT
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.nfc.port=I2C
+
+# WiFi display
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.debug.wfd.enable=1 \
+    persist.sys.wfd.virtual=0
+
 # GPS communicates via QMI
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.gps.qmienabled=true
@@ -309,9 +320,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.serialno=530ef047
 
+# Allow device to be used without SIM
+PRODUCT_PROPERTY_OVERRIDES += \
+    keyguard.no_require_sim=true
+
+# DRM content
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
+
 # Qcom CABL
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.cabl=1
+
+# Qcom optimizations
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.extension_library=/vendor/lib/libqc-opt.so
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib/libril-qc-qmi-1.so \

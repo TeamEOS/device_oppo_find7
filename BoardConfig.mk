@@ -14,11 +14,14 @@
 # limitations under the License.
 #
 
+# Define kernel config for inline building
+TARGET_KERNEL_CONFIG := msm8974_find7wx_defconfig
+
 # BT device name
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oppo/find7_caf/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oppo/find7/bluetooth
 
 # TWRP specific build flags
 DEVICE_RESOLUTION := 1080x1920
 
 -include vendor/oppo/find7/BoardConfigVendor.mk
-include device/oppo/find7_caf/BoardConfigCommon.mk
+include device/oppo/find7/BoardConfigCommon.mk
