@@ -166,12 +166,21 @@ PRODUCT_PACKAGES += \
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
+    libdivxdrmdecrypt \
     libstagefrighthw \
+    libdashplayer \
+    libOmxAacEnc \
+    libOmxAmrEnc \
     libOmxCore \
     libmm-omxcore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVdecHevc \
-    libOmxVenc
+    libOmxVenc \
+    qcmediaplayer
+
+PRODUCT_BOOT_JARS += qcmediaplayer
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -268,6 +277,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=false \
     af.resampler.quality=4
+
+# Qualcomm AAC hardware encoder
+PRODUCT_PROPERTY_OVERRIDES += \
+    qcom.hw.aac.encoder=true
 
 # Sensor Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
