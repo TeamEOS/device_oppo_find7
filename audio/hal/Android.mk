@@ -111,6 +111,9 @@ ifeq ($(strip $(AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP)),true)
 endif
 endif
 
+ifneq ($(strip $(AUDIO_FEATURE_DISABLED_PCM_24_BIT_OFFLOAD)),true)
+    LOCAL_CFLAGS += -DAUDIO_PCM_24_BIT_OFFLOAD_ENABLED
+endif
 
 LOCAL_SHARED_LIBRARIES := \
 	liblog \
