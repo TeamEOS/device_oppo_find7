@@ -15,7 +15,7 @@
 #
 
 # Define kernel config for inline building
-TARGET_KERNEL_CONFIG := find7wx_defconfig
+TARGET_KERNEL_CONFIG := msm8974_find7wx_defconfig
 
 # BT device name
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oppo/find7/bluetooth

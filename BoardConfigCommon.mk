@@ -143,7 +143,7 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_CUSTOM_BOOTIMG_MK := device/oppo/find7/mkbootimg.mk
 
 # Define kernel source for inline building
-TARGET_KERNEL_SOURCE := kernel/oppo/find7
+TARGET_KERNEL_SOURCE := kernel/oppo/msm8974
 
 # The list below is order dependent
 BOARD_SEPOLICY_UNION += \
