@@ -697,6 +697,7 @@ int platform_set_fluence_type(void *platform, char *value)
 
     ALOGV("%s: fluence type:%d", __func__, my_data->fluence_type);
 
+#ifdef FLUENCE_ENABLED
     /* only dual mic turn on and off is supported as of now through setparameters */
     if (!strncmp(AUDIO_PARAMETER_VALUE_DUALMIC,value, sizeof(AUDIO_PARAMETER_VALUE_DUALMIC))) {
         if (!strncmp("fluencepro", my_data->fluence_cap, sizeof("fluencepro")) ||
@@ -717,6 +718,7 @@ int platform_set_fluence_type(void *platform, char *value)
         ret = -1;
         goto done;
     }
+#endif
 
     if (fluence_type != my_data->fluence_type) {
         ALOGV("%s: Updating fluence_type to :%d", __func__, fluence_type);
