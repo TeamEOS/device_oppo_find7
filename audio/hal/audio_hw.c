@@ -2206,6 +2206,7 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
         //Decide if we need to use gapless mode by default
         check_and_set_gapless_mode(adev);
 
+#ifdef AUDIO_USECASE_INCALL_MUSIC_ENABLED
     } else if (out->flags & AUDIO_OUTPUT_FLAG_INCALL_MUSIC) {
         ret = voice_check_and_set_incall_music_usecase(adev, out);
         if (ret != 0) {
@@ -2213,6 +2214,7 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
                   __func__, ret);
             goto error_open;
         }
+#endif
     } else if (out->flags & AUDIO_OUTPUT_FLAG_FAST) {
         out->usecase = USECASE_AUDIO_PLAYBACK_LOW_LATENCY;
         out->config = pcm_config_low_latency;
