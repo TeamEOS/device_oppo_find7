@@ -156,16 +156,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     copybit.msm8974 \
     gralloc.msm8974 \
-    libgenlock \
     hwcomposer.msm8974 \
-    memtrack.msm8974 \
-    libqdutils \
-    libqdMetaData
+    memtrack.msm8974
 
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
+    libdivxdrmdecrypt \
     libstagefrighthw \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
     libOmxCore \
     libmm-omxcore \
     libOmxVdec \
@@ -174,6 +176,8 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    audiod \
+    audio_policy.msm8974 \
     audio.primary.msm8974 \
     audio.a2dp.default \
     audio.usb.default \
