@@ -118,6 +118,10 @@ ifneq ($(strip $(AUDIO_FEATURE_DISABLED_PCM_24_BIT_OFFLOAD)),true)
 endif
 endif
 
+ifneq ($(strip $(AUDIO_FEATURE_DISABLED_VOIP_COMPRESS)),true)
+    LOCAL_CFLAGS += -DAUDIO_VOIP_COMPRESS_ENABLED
+endif
+
 LOCAL_SHARED_LIBRARIES := \
 	liblog \
 	libcutils \

@@ -2110,6 +2110,7 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
         out->config.rate = config->sample_rate;
         out->config.channels = popcount(out->channel_mask);
         out->config.period_size = HDMI_MULTI_PERIOD_BYTES / (out->config.channels * 2);
+#ifdef AUDIO_VOIP_COMPRESS_ENABLED
     } else if ((out->dev->mode == AUDIO_MODE_IN_COMMUNICATION) &&
                (out->flags == (AUDIO_OUTPUT_FLAG_DIRECT | AUDIO_OUTPUT_FLAG_VOIP_RX)) &&
                (voice_extn_compress_voip_is_config_supported(config))) {
@@ -2119,6 +2120,7 @@ static int adev_open_output_stream(struct audio_hw_device *dev,
                   __func__, ret);
             goto error_open;
         }
+#endif
     } else if (out->flags & AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD) {
         if (config->offload_info.version != AUDIO_INFO_INITIALIZER.version ||
             config->offload_info.size != AUDIO_INFO_INITIALIZER.size) {
