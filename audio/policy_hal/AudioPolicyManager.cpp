@@ -1046,6 +1046,7 @@ bool AudioPolicyManager::isOffloadSupported(const audio_offload_info_t& offloadI
 
     char propValue[PROPERTY_VALUE_MAX];
     bool pcmOffload = false;
+#ifdef AUDIO_OFFLOAD_PCM_ENABLED
     if (audio_is_offload_pcm(offloadInfo.format)) {
         if(property_get("audio.offload.pcm.enable", propValue, NULL)) {
             bool prop_enabled = atoi(propValue) || !strncmp("true", propValue, 4);
@@ -1059,6 +1060,7 @@ bool AudioPolicyManager::isOffloadSupported(const audio_offload_info_t& offloadI
             return false;
         }
     }
+#endif
 
     if (!pcmOffload) {
         // Check if offload has been disabled
