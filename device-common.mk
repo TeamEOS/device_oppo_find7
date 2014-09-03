@@ -157,7 +157,8 @@ PRODUCT_PACKAGES += \
     copybit.msm8974 \
     gralloc.msm8974 \
     hwcomposer.msm8974 \
-    memtrack.msm8974
+    memtrack.msm8974 \
+    liboverlay
 
 # OMX
 PRODUCT_PACKAGES += \
