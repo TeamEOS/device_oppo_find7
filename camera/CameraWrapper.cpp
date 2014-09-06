@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012-2013, The CyanogenMod Project
+ * Copyright (C) 2014, TeamEOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +30,6 @@
 
 #include <utils/threads.h>
 #include <utils/String8.h>
-#include <utils/Errors.h>
 #include <hardware/hardware.h>
 #include <hardware/camera.h>
 #include <camera/Camera.h>
@@ -55,7 +55,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          version_minor: 0,
          id: CAMERA_HARDWARE_MODULE_ID,
          name: "Find7 Camera Wrapper",
-         author: "The CyanogenMod Project",
+         author: "TeamEOS",
          methods: &camera_module_methods,
          dso: NULL, /* remove compilation warnings */
          reserved: {0}, /* remove compilation warnings */
@@ -75,10 +75,6 @@ typedef struct wrapper_camera_device {
     wrapper_camera_device_t *__wrapper_dev = (wrapper_camera_device_t*) device; \
     __wrapper_dev->vendor->ops->func(__wrapper_dev->vendor, ##__VA_ARGS__); \
 })
-
-static bool flipZsl = false;
-static bool zslState = false;
-static bool previewRunning = false;
 
 #define CAMERA_ID(device) (((wrapper_camera_device_t *)(device))->id)
 
@@ -152,17 +148,6 @@ char * camera_fixup_setparams(int id, const char * settings)
     } else {
         params.set("hdr-mode", "0");
     }
-
-    if (!strcmp(params.get("zsl"), "on")) {
-        if (previewRunning && !zslState) { flipZsl = true; }
-        zslState = true;
-        params.set("camera-mode", "1");
-    } else {
-        if (previewRunning && zslState) { flipZsl = true; }
-        zslState = false;
-        params.set("camera-mode", "0");
-    }
-
 
     ALOGV("%s: fixed parameters:", __func__);
     //params.dump();
@@ -239,16 +224,13 @@ int camera_msg_type_enabled(struct camera_device * device, int32_t msg_type)
 
 int camera_start_preview(struct camera_device * device)
 {
-    int rc = 0;
     ALOGV("%s", __FUNCTION__);
     ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device, (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
 
     if (!device)
         return -EINVAL;
 
-    rc = VENDOR_CALL(device, start_preview);
-    previewRunning = (rc == android::NO_ERROR);
-    return rc;
+    return VENDOR_CALL(device, start_preview);
 }
 
 void camera_stop_preview(struct camera_device * device)
@@ -259,7 +241,6 @@ void camera_stop_preview(struct camera_device * device)
     if (!device)
         return;
 
-    previewRunning = false;
     VENDOR_CALL(device, stop_preview);
 }
 
@@ -395,14 +376,7 @@ int camera_set_parameters(struct camera_device * device, const char *params)
     __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, tmp);
 #endif
 
-    if (flipZsl) {
-        camera_stop_preview(device);
-    }
     int ret = VENDOR_CALL(device, set_parameters, tmp);
-    if (flipZsl) {
-        camera_start_preview(device);
-        flipZsl = false;
-    }
     return ret;
 }
 
