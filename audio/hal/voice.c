@@ -372,9 +372,11 @@ int voice_set_parameters(struct audio_device *adev, struct str_parms *parms)
     if (ret != 0)
         goto done;
 
+#ifdef COMPRESS_VOIP_ENABLED
     ret = voice_extn_compress_voip_set_parameters(adev, parms);
     if (ret != 0)
         goto done;
+#endif
 
     err = str_parms_get_str(parms, AUDIO_PARAMETER_KEY_TTY_MODE, value, sizeof(value));
     if (err >= 0) {
