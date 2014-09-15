@@ -153,7 +153,6 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
        app.te \
-       bluetooth_loader.te \
        bridge.te \
        camera.te \
        device.te \
@@ -173,12 +172,9 @@ BOARD_SEPOLICY_UNION += \
        ssr.te \
        surfaceflinger.te \
        system_server.te \
-       tee.te \
        thermald.te \
        time.te \
        ueventd.te \
-       vss.te \
-       wpa.te \
        file_contexts \
        genfs_contexts \
        te_macros
