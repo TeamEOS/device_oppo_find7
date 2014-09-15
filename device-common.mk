@@ -48,13 +48,13 @@ PRODUCT_COPY_FILES += \
 
 # ACDB Loader calibration
 PRODUCT_COPY_FILES += \
-	device/oppo/find7/acdbloader/Bluetooth_cal.acdb:system/etc/Bluetooth_cal.acdb \
-	device/oppo/find7/acdbloader/General_cal.acdb:system/etc/General_cal.acdb \
-	device/oppo/find7/acdbloader/Global_cal.acdb:system/etc/Global_cal.acdb \
-	device/oppo/find7/acdbloader/Handset_cal.acdb:system/etc/Handset_cal.acdb \
-	device/oppo/find7/acdbloader/Hdmi_cal.acdb:system/etc/Hdmi_cal.acdb \
-	device/oppo/find7/acdbloader/Headset_cal.acdb:system/etc/Headset_cal.acdb \
-	device/oppo/find7/acdbloader/Speaker_cal.acdb:system/etc/Speaker_cal.acdb \
+	device/oppo/find7/acdb/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
+	device/oppo/find7/acdb/MTP_General_cal.acdb:system/etc/acdbdata/MTP/MTP_General_cal.acdb \
+	device/oppo/find7/acdb/MTP_Global_cal.acdb:system/etc/acdbdata/MTP/MTP_Global_cal.acdb \
+	device/oppo/find7/acdb/MTP_Handset_cal.acdb:system/etc/acdbdata/MTP/MTP_Handset_cal.acdb \
+	device/oppo/find7/acdb/MTP_Hdmi_cal.acdb:system/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb \
+	device/oppo/find7/acdb/MTP_Headset_cal.acdb:system/etc/acdbdata/MTP/MTP_Headset_cal.acdb \
+	device/oppo/find7/acdb/MTP_Speaker_cal.acdb:system/etc/acdbdata/MTP/MTP_Speaker_cal.acdb \
 
 # Audio policy
 PRODUCT_COPY_FILES += \
@@ -271,7 +271,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=false \
-    af.resampler.quality=4
+    af.resampler.quality=4 \
+    audio.offload.disable=1
 
 # Sensor Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
