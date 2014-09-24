@@ -153,9 +153,20 @@ TARGET_KERNEL_SOURCE := kernel/oppo/msm8974
 
 # The list below is order dependent
 BOARD_SEPOLICY_UNION += \
-       app.te \
-       device.te \
-       file_contexts
+    file.te \
+    device.te \
+    app.te \
+    cne.te \
+    qmux.te \
+    mpdecision.te \
+    thermald.te \
+    ueventd.te \
+    vold.te \
+    zygote.te \
+    system.te \
+    file_contexts \
+    genfs_contexts \
+    te_macros
 
 HAVE_ADRENO_SOURCE:= false
 
