@@ -307,10 +307,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0
 
-# GPS communicates via QMI
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.gps.qmienabled=true
-
 # set default USB configuration
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
