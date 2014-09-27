@@ -21,7 +21,6 @@ PRODUCT_COPY_FILES += \
 # QCOM ramfs bits
 PRODUCT_COPY_FILES += \
     device/oppo/find7/ramdisk/init.find7.rc:root/init.find7.rc \
-    device/oppo/find7/ramdisk/init.qcom.sh:root/init.qcom.sh \
     device/oppo/find7/ramdisk/fstab.find7:root/fstab.find7 \
     device/oppo/find7/ramdisk/ueventd.find7.rc:root/ueventd.find7.rc
 
