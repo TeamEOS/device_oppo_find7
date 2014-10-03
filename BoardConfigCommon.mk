@@ -46,6 +46,8 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x00000100
 # Flags
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
+TARGET_SPECIFIC_HEADER_PATH := device/oppo/find7/include
+
 # QC Time Services
 BOARD_USES_QC_TIME_SERVICES := true
 TARGET_NO_RPC := true
