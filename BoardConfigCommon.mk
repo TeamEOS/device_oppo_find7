@@ -175,6 +175,7 @@ BOARD_SEPOLICY_UNION += \
        thermald.te \
        time.te \
        ueventd.te \
+       zygote.te \
        file_contexts \
        genfs_contexts \
        te_macros
