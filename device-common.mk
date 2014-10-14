@@ -325,10 +325,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
 
-# Qcom CABL
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.cabl=1
-
 # Qcom optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/vendor/lib/libqc-opt.so

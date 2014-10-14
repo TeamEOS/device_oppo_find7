@@ -22,9 +22,6 @@
     <string name="vibrator_default_title">Default</string>
     <string name="vibrator_test_title">Test</string>
 
-    <string name="cabc_settings_title_head">CABL Settings</string>
-    <string name="cabc_settings_summary_head">Content Adaptive Backlight Settings</string>
-
     <string name="gamma_mode_title">LCD gamma mode</string>
 
 </resources>

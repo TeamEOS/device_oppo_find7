@@ -48,12 +48,4 @@
             android:title="@string/vibrator_tuning_title_head"
             android:summary="@string/vibrator_tuning_summary_head" />
     </PreferenceCategory>
-
-    <PreferenceScreen
-        android:title="@string/cabc_settings_title_head"
-        android:summary="@string/cabc_settings_summary_head">
-        <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.qualcomm.cabl"
-            android:targetClass="com.qualcomm.cabl.CABLPreferences" />
-    </PreferenceScreen>
 </PreferenceScreen>
