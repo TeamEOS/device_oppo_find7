@@ -656,7 +656,7 @@ on property:init.svc.sdcard=running
     wait /mnt/shell/emulated/0
     mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
 
-service charger /charger_find7
+service charger /charger
     class charger
 
 service ssr_diag /system/bin/ssr_diag

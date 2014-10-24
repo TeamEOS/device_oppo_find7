@@ -228,8 +228,8 @@ PRODUCT_PACKAGES += \
 
 # Offline charging mode
 PRODUCT_PACKAGES += \
-    charger_find7 \
-    charger_res_images_find7
+    charger \
+    charger_res_images
 
 # Device Settings
 PRODUCT_PACKAGES += \
