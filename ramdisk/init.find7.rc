@@ -66,7 +66,7 @@ on init
     export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
 
 on fs
- 	mount_all ./fstab.find7
+    mount_all ./fstab.find7
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
@@ -89,7 +89,7 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
-	mkdir /data/opponvitems  0771 radio radio
+    mkdir /data/opponvitems  0771 radio radio
 
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
