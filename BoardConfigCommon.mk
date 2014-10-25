@@ -46,11 +46,8 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x00000100
 # Flags
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
+# Includes - Remove me when Lollipop is here
 TARGET_SPECIFIC_HEADER_PATH := device/oppo/find7/include
-
-# QC Time Services
-BOARD_USES_QC_TIME_SERVICES := true
-TARGET_NO_RPC := true
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DOPPO_CAMERA_HARDWARE -DFOURKSUPPORT
@@ -120,9 +117,12 @@ BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_qcwcn
 WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 
+TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOOTLOADER_BOARD_NAME := find7
 TARGET_BOARD_INFO_FILE := device/oppo/find7/board-info.txt
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
+TARGET_NO_RPC := true
 
 BOARD_EGL_CFG := device/oppo/find7/egl.cfg
 
