@@ -278,5 +278,7 @@
     
     <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
     <!-- <bool name="config_intrusiveBatteryLed">true</bool> -->
-    
+
+    <!--  Maximum number of supported users -->
+    <integer name="config_multiuserMaximumUsers">4</integer>
 </resources>
