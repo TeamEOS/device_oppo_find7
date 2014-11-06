@@ -125,6 +125,9 @@ on boot
     chown system camera /sys/class/leds/led:flash_torch/brightness
     chmod 0666 /sys/class/leds/led:flash_torch/brightness
 
+    # thermald dac_override
+    chmod 664 /sys/class/leds/lcd-backlight/brightness
+
 #Add for wifi ftm by qiulei
    chown system system /system/bin/wifi_ftm
    chmod 0777  /system/bin/wifi_ftm
