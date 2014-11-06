@@ -266,9 +266,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.dualmic.config=endfire \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
-    persist.audio.fluence.speaker=false \
-    af.resampler.quality=4 \
-    audio.offload.disable=1
+    persist.audio.fluence.speaker=false
 
 # Sensor Configuration
 PRODUCT_PROPERTY_OVERRIDES += \
