@@ -1,2 +1,0 @@
-allow system anr_data_file:dir relabelto;
-allow system cache_backup_file:file relabelto;

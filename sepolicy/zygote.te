@@ -1,2 +1,0 @@
-allow zygote init:fifo_file { read write getattr };
-allow zygote init:unix_stream_socket { read write getattr };
