@@ -187,7 +187,8 @@ PRODUCT_PACKAGES += \
     libdirac \
     libqcomvisualizer \
     libqcomvoiceprocessing \
-    libqcomvoiceprocessingdescriptors
+    libqcomvoiceprocessingdescriptors \
+    libqcompostprocbundle
 
 PRODUCT_PACKAGES += \
     libqomx_core \
