@@ -46,9 +46,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x00000100
 # Flags
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
-# Includes - Remove me when Lollipop is here
-TARGET_SPECIFIC_HEADER_PATH := device/oppo/find7/include
-
 # Camera
 COMMON_GLOBAL_CFLAGS += -DOPPO_CAMERA_HARDWARE -DFOURKSUPPORT
 USE_DEVICE_SPECIFIC_CAMERA := true
