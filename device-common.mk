@@ -335,6 +335,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM
 
+# If data_no_toggle is 1 then active and dormancy enable at all times.
+# If data_no_toggle is 0 there are no reports if the screen is off.
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.data_no_toggle=1
+
 # DiracHD audio effects
 PRODUCT_PROPERTY_OVERRIDES += \
     dsp.dirac.enable=true
