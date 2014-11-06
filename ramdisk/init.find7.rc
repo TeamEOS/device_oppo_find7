@@ -262,8 +262,6 @@ on post-fs
 
 # msm specific files that need to be created on /data
 on post-fs-data
-    restorecon_recursive /data/fdAlbum
-
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
@@ -324,6 +322,9 @@ on post-fs-data
     # Sensor
     mkdir /persist/sensors
     chmod 775 /persist/sensors
+
+    # Label in case file already exists
+    restorecon /data/fdAlbum
 
     # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
     # We chown/chmod /persist again so because mount is run as root + defaults
