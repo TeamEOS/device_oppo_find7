@@ -176,8 +176,6 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audiod \
-    audio_policy.msm8974 \
     audio.primary.msm8974 \
     audio.a2dp.default \
     audio.usb.default \
@@ -198,7 +196,7 @@ PRODUCT_PACKAGES += \
     keystore.msm8974
 
 PRODUCT_PACKAGES += \
-    power.find7
+    power.msm8974
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
