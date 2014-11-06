@@ -86,7 +86,6 @@ on early-boot
     setrlimit 8 67108864 67108864
     # Allow subsystem (modem etc) debugging
     write /sys/module/subsystem_restart/parameters/enable_debug 1
-    write /sys/kernel/boot_adsp/boot 1
 
 on boot
     mkdir /data/opponvitems  0771 radio radio
@@ -265,6 +264,8 @@ on post-fs
 
 # msm specific files that need to be created on /data
 on post-fs-data
+    write /sys/kernel/boot_adsp/boot 1
+
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
