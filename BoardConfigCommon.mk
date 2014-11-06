@@ -192,3 +192,6 @@ TW_INCLUDE_JB_CRYPTO := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 -include vendor/oppo/find7/BoardConfigVendor.mk
+
+# Enable Minikin text layout engine (will be the default soon)
+USE_MINIKIN := true
