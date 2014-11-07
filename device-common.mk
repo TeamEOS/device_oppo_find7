@@ -372,10 +372,10 @@ PRODUCT_PACKAGES += \
     QXDMLogger
 
 PRODUCT_COPY_FILES += \
-    device/oppo/find7/ramdisk/init.hammerhead.diag.rc.userdebug:root/init.hammerhead.diag.rc
+    device/oppo/find7/ramdisk/init.find7.diag.rc.userdebug:root/init.find7.diag.rc
 else
 PRODUCT_COPY_FILES += \
-    device/oppo/find7/ramdisk/init.hammerhead.diag.rc.user:root/init.hammerhead.diag.rc
+    device/oppo/find7/ramdisk/init.find7.diag.rc.user:root/init.find7.diag.rc
 endif
 
 # setup dalvik vm configs.
