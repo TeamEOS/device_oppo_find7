@@ -113,6 +113,15 @@ TARGET_NO_RPC := true
 
 BOARD_EGL_CFG := device/oppo/find7/egl.cfg
 
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+  ifeq ($(TARGET_BUILD_VARIANT),user)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+    endif
+  endif
+endif
+
 # For ext4 partitions larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
 
