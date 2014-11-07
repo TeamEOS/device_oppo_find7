@@ -303,7 +303,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Networks
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=QualcommMSIM42RIL
+    ro.telephony.ril_class=OppoRIL
 
 # LTE
 PRODUCT_PROPERTY_OVERRIDES += \

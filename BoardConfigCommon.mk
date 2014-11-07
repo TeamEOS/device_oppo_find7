@@ -54,7 +54,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/oppo/find7/ril/telephony/java/com/android/internal/telephony/QualcommMSIM42RIL.java
+BOARD_RIL_CLASS := ../../../device/oppo/find7/ril/telephony/java/com/android/internal/telephony/OppoRIL.java
 
 # Shader cache config options
 # Maximum size of the GLES Shaders that can be cached for reuse.
