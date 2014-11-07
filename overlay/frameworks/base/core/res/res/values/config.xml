@@ -225,10 +225,10 @@
     <bool name="config_hotswapCapable">true</bool>
 
     <!-- True if the gesture service should be started at system start -->
-    <bool name="config_enableGestureService">true</bool>
+    <!-- <bool name="config_enableGestureService">true</bool> -->
 
     <!-- Enable flashlight -->
-    <bool name="config_enableTorch">true</bool>
+    <!-- <bool name="config_enableTorch">true</bool> -->
 
     <!-- Set to true to add links to Cell Broadcast app from Settings and MMS app. -->
     <bool name="config_cellBroadcastAppLinks">true</bool>
@@ -246,7 +246,7 @@
             16 - App switch
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareKeys">7</integer>
+    <!-- <integer name="config_deviceHardwareKeys">7</integer> -->
     
     <!-- Control the behavior when the user long presses the home button.
               0 - Nothing
@@ -273,7 +273,7 @@
     <integer name="config_doubleTapOnHomeBehavior">3</integer>
 
     <!-- enable support for off-screen gesture support -->
-    <bool name="config_offscreenGestureSupport">true</bool>
+    <!-- <bool name="config_offscreenGestureSupport">true</bool> -->
     
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.
