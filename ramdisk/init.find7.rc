@@ -26,6 +26,7 @@
 #
 
 import init.find7.usb.rc
+import init.find7.diag.rc
 
 import init.find7a.rc
 import init.find7s.rc
