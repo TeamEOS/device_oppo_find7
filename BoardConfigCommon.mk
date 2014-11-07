@@ -121,6 +121,7 @@ ifeq ($(HOST_OS),linux)
     endif
   endif
 endif
+DONT_DEXPREOPT_PREBUILTS := true
 
 # For ext4 partitions larger than 2gb
 BOARD_HAS_LARGE_FILESYSTEM := true
