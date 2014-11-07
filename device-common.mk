@@ -143,6 +143,7 @@ PRODUCT_PACKAGES += \
     hostapd.deny \
     libwpa_client \
     hostapd \
+    dhcpcd.conf \
     wpa_supplicant \
     wpa_supplicant.conf
 
