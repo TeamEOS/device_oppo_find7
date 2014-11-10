@@ -378,5 +378,13 @@ PRODUCT_COPY_FILES += \
     device/oppo/find7/ramdisk/init.find7.diag.rc.user:root/init.find7.diag.rc
 endif
 
+# Debug properties
+ifeq ($(TARGET_BUILD_VARIANT), eng)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.secure=0 \
+    ro.debuggable=1 \
+    persist.service.adb.enable=1
+endif
+
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
