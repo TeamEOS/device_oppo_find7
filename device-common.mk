@@ -125,6 +125,10 @@ DEVICE_PACKAGE_OVERLAYS := \
 PRODUCT_PACKAGES += \
     Torch
 
+# QC bt vendor
+PRODUCT_PACKAGES += \
+    libbt-vendor
+
 # WiFi
 PRODUCT_COPY_FILES += \
     device/oppo/find7/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
