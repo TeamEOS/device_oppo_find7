@@ -39,10 +39,3 @@ $(call inherit-product, device/oppo/find7/device-common.mk)
 
 # inherit from the non-open-source side, if present
 $(call inherit-product-if-exists, vendor/oppo/find7/find7-vendor.mk)
-
-# inherit from the EOS vendor, if present
-$(call inherit-product-if-exists, vendor/eos/config/common_full_phone.mk)
-
-# Copy Bootanimation
-PRODUCT_COPY_FILES += \
-vendor/eos/prebuilt/common/bootanimation/1080.zip:system/media/bootanimation.zip
