@@ -77,6 +77,9 @@ TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
 
+# kgsl/rmt_storage
+BOARD_USES_LEGACY_MMAP := true
+
 # Keymaster
 TARGET_USE_ION_COMPAT := true
 
