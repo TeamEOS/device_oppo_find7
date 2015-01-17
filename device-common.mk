@@ -206,8 +206,7 @@ PRODUCT_PACKAGES += \
     keystore.msm8974
 
 PRODUCT_PACKAGES += \
-    power.msm8974 \
-    power.find7
+    power.msm8974
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
