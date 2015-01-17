@@ -257,8 +257,8 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 # Device Settings
-PRODUCT_PACKAGES += \
-    Find7Settings
+#PRODUCT_PACKAGES += \
+#    Find7Settings
 
 # msm_rng entropy feeder
 PRODUCT_PACKAGES += \
